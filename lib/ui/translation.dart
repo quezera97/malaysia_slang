@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:translator/translator.dart';
 
-class HomePage extends StatefulWidget {
+class TranslationPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _TranslationPageState createState() => _TranslationPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _TranslationPageState extends State<TranslationPage> {
   GoogleTranslator translator = GoogleTranslator();
 
   String _transalateLanguage;
