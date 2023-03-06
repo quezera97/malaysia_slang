@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SplashScreen(),
         '/dashboard': (context) => MainDashboard(),
-        '/translation': (context) => TranslationPage(),
+        // '/translation': (context) => TranslationPage(),
       },
     );
   }
