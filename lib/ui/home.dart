@@ -467,7 +467,7 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(10.0),
                       color: Colors.red[400],
                     ),
-                    child: FlatButton(
+                    child: ElevatedButton(
                       onPressed: () {
                         trans();
                       },
