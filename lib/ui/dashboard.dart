@@ -10,7 +10,7 @@ class MainDashboard extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.green,
           centerTitle: true,
           title: RichText(
             text: TextSpan(
