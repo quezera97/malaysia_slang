@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:translator_app/ui/class/selectCard.dart';
+import 'package:translator_app/ui/widget/selectCard.dart';
 
 class MainDashboard extends StatelessWidget {
   const MainDashboard();

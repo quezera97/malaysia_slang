@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:translator_app/ui/widget/expansionTile.dart';
 
 class Restaurant extends StatefulWidget {
   const Restaurant({super.key});
@@ -7,7 +9,8 @@ class Restaurant extends StatefulWidget {
   State<Restaurant> createState() => _RestaurantState();
 }
 
-class _RestaurantState extends State<Restaurant> {
+class _RestaurantState extends State<Restaurant> {  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,11 +38,15 @@ class _RestaurantState extends State<Restaurant> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const ExpansionTile(
-              title: Text('ExpansionTile 1'),
-              children: <Widget>[
-                ListTile(title: Text('This is tile number 1')),
-              ],
+            ExpansionTileWidget(
+              expansionTileTitle: 'Can you recommended a restaurant?',
+              listTileTitle: 'Restoran apa yang sedap eh?',
+              assetUrlRestaurant: 'sound/restaurant/test.mp3',
+            ),
+            ExpansionTileWidget(
+              expansionTileTitle: 'Can I have the menu, please?',
+              listTileTitle: 'Bang/ Kak, menu ada tak?',
+              assetUrlRestaurant: 'sound/restaurant/test.mp3',
             ),
           ],
         ),

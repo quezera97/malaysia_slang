@@ -45,7 +45,7 @@ class StartState extends State<SplashScreen> {
           ),
           Center(
             child: Container(
-              child: Image.asset('lib/assets/img/malaysia_flag_1.png'),
+              child: Image.asset('assets/img/malaysia_flag_1.png'),
             ),
           )
         ],
