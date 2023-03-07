@@ -7,7 +7,7 @@ class MainDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.green,
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.green,
@@ -32,14 +32,17 @@ class MainDashboard extends StatelessWidget {
           ),
         ),
         body: GridView.count(
-            padding: EdgeInsets.all(20),
-            crossAxisCount: 2,
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 10.0,
-            children: List.generate(choices.length, (index) {
-              return Center(
-                child: SelectCard(choice: choices[index]),
-              );
-            })));
+          padding: EdgeInsets.all(10),
+          crossAxisCount: 2,
+          crossAxisSpacing: 5.0,
+          mainAxisSpacing: 5.0,
+          children: List.generate(choices.length, (index) {
+            return Center(
+              child: SelectCard(choice: choices[index]),
+            );
+          }
+        )
+      )
+    );
   }
 }
