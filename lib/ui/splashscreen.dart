@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:translator_app/ui/dashboard.dart';
-import 'package:translator_app/ui/translation.dart';
+import 'package:translator_app/ui/slang.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -25,7 +24,7 @@ class StartState extends State<SplashScreen> {
   
   routeDashboardMain() {
     Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) =>  MainDashboard()));
+        MaterialPageRoute(builder: (context) =>  SelectSlang()));
   }
 
 

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:translator_app/ui/widget/selectCardDashboard.dart';
+import 'package:translator_app/ui/widget/selectCardSlang.dart';
+import 'package:hexcolor/hexcolor.dart';
 
-class MainDashboard extends StatelessWidget {
-  const MainDashboard();
+class SelectSlang extends StatelessWidget {
+  const SelectSlang();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green,
+        backgroundColor: HexColor('#EDE9D5'),
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.green,
+          backgroundColor: HexColor('#FFACAC'),
           centerTitle: true,
           title: RichText(
             text: TextSpan(
@@ -36,9 +37,9 @@ class MainDashboard extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 5.0,
           mainAxisSpacing: 5.0,
-          children: List.generate(dashboardChoices.length, (index) {
+          children: List.generate(slangChoices.length, (index) {
             return Center(
-              child: SelectCardDashboard(choice: dashboardChoices[index]),
+              child: SelectCardSlang(choice: slangChoices[index]),
             );
           }
         )

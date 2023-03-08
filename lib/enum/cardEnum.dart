@@ -1,5 +1,5 @@
 class CardEnum {
-  static String get hotel => "Hotel";
+  static String get accommodation => "Accommodation";
   static String get restaurant => "Restaurant";
   static String get emergency => "Emergency";
   static String get greetings => "Greetings";

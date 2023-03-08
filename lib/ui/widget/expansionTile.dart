@@ -17,7 +17,6 @@ class ExpansionTileWidget extends StatefulWidget {
     required this.assetUrl,
   });
 
-
   @override
   _ExpansionTileWidgetState createState() => _ExpansionTileWidgetState();
 }

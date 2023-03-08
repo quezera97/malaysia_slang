@@ -28,6 +28,7 @@ dependencies:
   audioplayers: ^3.0.1
   shared_preferences: ^2.0.18
   favorite_button: ^0.0.4
+  hexcolor: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -44,11 +45,12 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/img/jata
+    - assets/img/bendera/
     - assets/img/malaysia_flag_1.png
-
-    - assets/sound/restaurant/test.mp3
-    - assets/sound/hotel/
-
+    
+    - assets/sound/restaurant/
+    - assets/sound/accommodation/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

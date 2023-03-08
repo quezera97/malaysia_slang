@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:translator_app/ui/dashboard.dart';
+import 'package:translator_app/ui/slang.dart';
 import 'package:translator_app/ui/splashscreen.dart';
-import 'package:translator_app/ui/translation.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SplashScreen(),
         '/dashboard': (context) => MainDashboard(),
-        // '/translation': (context) => TranslationPage(),
+        '/slang': (context) => SelectSlang(),
       },
     );
   }

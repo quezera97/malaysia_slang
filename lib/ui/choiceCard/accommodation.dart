@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:translator_app/ui/widget/expansionTile.dart';
-import '../class/hotelList.dart';
+import '../class/accommodationList.dart';
 
-class Hotel extends StatefulWidget {
-  const Hotel({super.key});
+class Accommodation extends StatefulWidget {
+  const Accommodation({super.key});
 
   @override
-  State<Hotel> createState() => _HotelState();
+  State<Accommodation> createState() => _AccommodationState();
 }
 
-class _HotelState extends State<Hotel> {  
+class _AccommodationState extends State<Accommodation> {  
 
-  var hotelList = HotelList.hotel;
-  var vocabList = HotelList.essentialVocab;
+  var accommodationList = AccommodationList.accommodation;
+  var vocabList = AccommodationList.essentialVocab;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _HotelState extends State<Hotel> {
           text: TextSpan(
             children: <TextSpan>[
               TextSpan(
-                  text: 'Hotel',
+                  text: 'Accommodation',
                   style: TextStyle(
                       fontSize: 18,
                       color: Color(0xFF121212),
@@ -45,7 +45,7 @@ class _HotelState extends State<Hotel> {
               padding: const EdgeInsets.all(15.0),
               width: MediaQuery.of(context).size.width,
               color: Colors.grey,
-              child: Text('Hotel', style: TextStyle(
+              child: Text('Accommodation', style: TextStyle(
                   color: Colors.white, 
                   letterSpacing: 2.0
                 ),
@@ -55,14 +55,14 @@ class _HotelState extends State<Hotel> {
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: hotelList.length,
+              itemCount: accommodationList.length,
               itemBuilder: (context, index){
-                var splittedHotelList = hotelList[index].split("+");
+                var splittedAccommodationList = accommodationList[index].split("+");
 
                 return ExpansionTileWidget(
-                  expansionTileTitle: splittedHotelList[0],
-                  listTileTitle: splittedHotelList[1],
-                  assetUrl: splittedHotelList[2],
+                  expansionTileTitle: splittedAccommodationList[0],
+                  listTileTitle: splittedAccommodationList[1],
+                  assetUrl: splittedAccommodationList[2],
                 );
               }
             ),

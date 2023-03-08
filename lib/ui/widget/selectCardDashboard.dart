@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:translator_app/enum/cardEnum.dart';
-import 'package:translator_app/ui/choiceCard/hotel.dart';
+import 'package:translator_app/ui/choiceCard/accommodation.dart';
 import 'package:translator_app/ui/choiceCard/restaurant.dart';
 
 class Choice {
@@ -9,17 +9,17 @@ class Choice {
   final IconData icon;
 }
 
-const List<Choice> choices = const <Choice>[
+const List<Choice> dashboardChoices = const <Choice>[
   const Choice(title: 'Restaurant', icon: Icons.restaurant),
-  const Choice(title: 'Hotel', icon: Icons.hotel),
+  const Choice(title: 'Accommodation', icon: Icons.hotel),
   const Choice(title: 'Emergency', icon: Icons.emergency),
   // const Choice(title: 'Greetings', icon: Icons.handshake),
   // const Choice(title: 'Direction', icon: Icons.directions),
   // const Choice(title: 'Sightseeing', icon: Icons.holiday_village),
 ];
 
-class SelectCard extends StatelessWidget {
-  const SelectCard({Key? key, required this.choice}) : super(key: key);
+class SelectCardDashboard extends StatelessWidget {
+  const SelectCardDashboard({Key? key, required this.choice}) : super(key: key);
   final Choice choice;
 
   @override
@@ -35,9 +35,9 @@ class SelectCard extends StatelessWidget {
           if (choice.title == CardEnum.restaurant) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => Restaurant()));
-          } else if (choice.title == CardEnum.hotel) {
+          } else if (choice.title == CardEnum.accommodation) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Hotel()));
+                context, MaterialPageRoute(builder: (context) => Accommodation()));
           } else if (choice.title == CardEnum.emergency) {
             print(CardEnum.emergency);
           } else if (choice.title == CardEnum.greetings) {
@@ -58,7 +58,7 @@ class SelectCard extends StatelessWidget {
                 ),
               Text(choice.title,
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 15,
                   color: Color(0xFF121212),
                   fontFamily: 'PoppinsBold'
                 )
