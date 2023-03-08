@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/ui/widget/selectCardDashboard.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class MainDashboard extends StatelessWidget {
   const MainDashboard();
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green,
+        backgroundColor: HexColor('#EDE9D5'),
         appBar: AppBar(
+          leading: BackButton(
+            color: Colors.black,
+            onPressed: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.remove('prefsNegeri');
+
+              Navigator.pop(context);
+            },
+          ),
           elevation: 0.0,
-          backgroundColor: Colors.green,
+          backgroundColor: HexColor('#FFACAC'),
           centerTitle: true,
           title: RichText(
             text: TextSpan(
@@ -32,17 +42,15 @@ class MainDashboard extends StatelessWidget {
           ),
         ),
         body: GridView.count(
-          padding: EdgeInsets.all(10),
-          crossAxisCount: 2,
-          crossAxisSpacing: 5.0,
-          mainAxisSpacing: 5.0,
-          children: List.generate(dashboardChoices.length, (index) {
-            return Center(
-              child: SelectCardDashboard(choice: dashboardChoices[index]),
-            );
-          }
-        )
-      )
-    );
+            padding: EdgeInsets.all(10),
+            childAspectRatio: 1.7,
+            crossAxisCount: 2,
+            crossAxisSpacing: 5.0,
+            mainAxisSpacing: 5.0,
+            children: List.generate(dashboardChoices.length, (index) {
+              return Center(
+                child: SelectCardDashboard(choice: dashboardChoices[index]),
+              );
+            })));
   }
 }

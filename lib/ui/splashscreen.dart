@@ -4,14 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:translator_app/ui/slang.dart';
 
 class SplashScreen extends StatefulWidget {
-
-  @override
   State<StatefulWidget> createState() => StartState();
 }
 
 class StartState extends State<SplashScreen> {
-
-  @override
   void initState() {
     super.initState();
     startTime();
@@ -21,14 +17,12 @@ class StartState extends State<SplashScreen> {
     var duration = const Duration(seconds: 4);
     return Timer(duration, routeDashboardMain);
   }
-  
+
   routeDashboardMain() {
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) =>  SelectSlang()));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => SelectSlang()));
   }
 
-
-  @override
   Widget build(BuildContext context) {
     return initWidget(context);
   }

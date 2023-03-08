@@ -5,7 +5,6 @@ import 'package:hexcolor/hexcolor.dart';
 class SelectSlang extends StatelessWidget {
   const SelectSlang();
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: HexColor('#EDE9D5'),
@@ -33,17 +32,15 @@ class SelectSlang extends StatelessWidget {
           ),
         ),
         body: GridView.count(
-          padding: EdgeInsets.all(10),
-          crossAxisCount: 2,
-          crossAxisSpacing: 5.0,
-          mainAxisSpacing: 5.0,
-          children: List.generate(slangChoices.length, (index) {
-            return Center(
-              child: SelectCardSlang(choice: slangChoices[index]),
-            );
-          }
-        )
-      )
-    );
+            padding: EdgeInsets.all(10),
+            childAspectRatio: 1.3,
+            crossAxisCount: 2,
+            crossAxisSpacing: 5.0,
+            mainAxisSpacing: 5.0,
+            children: List.generate(slangChoices.length, (index) {
+              return Center(
+                child: SelectCardSlang(choice: slangChoices[index]),
+              );
+            })));
   }
 }
