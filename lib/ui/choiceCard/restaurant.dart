@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:translator_app/ui/widget/expansionTile.dart';
+import '../class/restaurantList.dart';
 
 class Restaurant extends StatefulWidget {
   const Restaurant({super.key});
@@ -9,6 +10,9 @@ class Restaurant extends StatefulWidget {
 }
 
 class _RestaurantState extends State<Restaurant> {  
+
+  var restaurantList = RestaurantList.restaurant;
+  var vocabList = RestaurantList.essentialVocab;
 
   @override
   Widget build(BuildContext context) {
@@ -41,36 +45,26 @@ class _RestaurantState extends State<Restaurant> {
               padding: const EdgeInsets.all(15.0),
               width: MediaQuery.of(context).size.width,
               color: Colors.grey,
-              child: Text('Eating', style: TextStyle(
+              child: Text('Restaurant', style: TextStyle(
                   color: Colors.white, 
                   letterSpacing: 2.0
                 ),
               ),
             ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Can you recommended a restaurant?',
-              listTileTitle: 'Restoran apa yang sedap eh?',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Can I have the menu, please?',
-              listTileTitle: 'Bang/ Kak, menu ada tak?',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'What\'s this?',
-              listTileTitle: 'Bang/ Kak, ni apa eh?',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'May I have a glass of water?',
-              listTileTitle: 'Bang/ Kak, air kosong satu?',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Bill please?',
-              listTileTitle: 'Kira bang/ kak?',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
+          
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: restaurantList.length,
+              itemBuilder: (context, index){
+                var splittedRestaurantList = restaurantList[index].split("+");
+
+                return ExpansionTileWidget(
+                  expansionTileTitle: splittedRestaurantList[0],
+                  listTileTitle: splittedRestaurantList[1],
+                  assetUrl: splittedRestaurantList[2],
+                );
+              }
             ),
 
             Container(
@@ -83,40 +77,20 @@ class _RestaurantState extends State<Restaurant> {
                 ),
               ),
             ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Spoon',
-              listTileTitle: 'Sudu',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Fork',
-              listTileTitle: 'Garfu/ Garpu',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Knife',
-              listTileTitle: 'Pisau',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Water',
-              listTileTitle: 'Air',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Food',
-              listTileTitle: 'Makanan',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Table',
-              listTileTitle: 'Meja',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
-            ),
-            ExpansionTileWidget(
-              expansionTileTitle: 'Chair',
-              listTileTitle: 'Kerusi',
-              assetUrlRestaurant: 'sound/restaurant/test.mp3',
+
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: vocabList.length,
+              itemBuilder: (context, index){
+                var splittedVocabList = vocabList[index].split("+");
+
+                return ExpansionTileWidget(
+                  expansionTileTitle: splittedVocabList[0],
+                  listTileTitle: splittedVocabList[1],
+                  assetUrl: splittedVocabList[2],
+                );
+              }
             ),
           ],
         ),

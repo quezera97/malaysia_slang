@@ -1,5 +1,6 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:audioplayers/audioplayers.dart';
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:translator_app/ui/widget/snackBar.dart';
@@ -7,14 +8,15 @@ import 'package:translator_app/ui/widget/snackBar.dart';
 class ExpansionTileWidget extends StatefulWidget {
   final String expansionTileTitle;
   final String listTileTitle;
-  final String assetUrlRestaurant;
+  final String assetUrl;
 
   ExpansionTileWidget({
     super.key,
     required this.expansionTileTitle,
     required this.listTileTitle,
-    required this.assetUrlRestaurant,
+    required this.assetUrl,
   });
+
 
   @override
   _ExpansionTileWidgetState createState() => _ExpansionTileWidgetState();
@@ -26,17 +28,7 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: Text(widget.expansionTileTitle),
-      trailing: FavoriteButton(
-        iconSize: 50,
-        isFavorite: false,
-        // iconDisabledColor: Colors.white,
-        valueChanged: (_isFavorite) {
-          if(_isFavorite == true){
-            
-          }
-        },
-      ),
+      title: Text(widget.expansionTileTitle),      
       children: <Widget>[
         ListTile(          
           title: Text(widget.listTileTitle),
@@ -47,7 +39,7 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
                 icon: Icon(Icons.play_arrow_sharp),
                 iconSize: 30,
                 onPressed: () async {
-                  await audioPlayer.play(AssetSource(widget.assetUrlRestaurant));
+                  await audioPlayer.play(AssetSource(widget.assetUrl));
                 },
               ),
               PopupMenuButton(
