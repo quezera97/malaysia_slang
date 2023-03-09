@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator_app/ui/widget/selectCardDashboard.dart';
+import 'package:translator_app/ui/widget/listTileDashboard.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class MainDashboard extends StatelessWidget {
@@ -49,7 +49,7 @@ class MainDashboard extends StatelessWidget {
             mainAxisSpacing: 5.0,
             children: List.generate(dashboardChoices.length, (index) {
               return Center(
-                child: SelectCardDashboard(choice: dashboardChoices[index]),
+                child: ListTileDashboard(choice: dashboardChoices[index]),
               );
             })));
   }
