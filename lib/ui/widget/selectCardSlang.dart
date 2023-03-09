@@ -4,6 +4,18 @@ import 'package:translator_app/enum/stateEnum.dart';
 import 'package:translator_app/ui/slangList.dart';
 import 'package:translator_app/ui/stateSlang/kl.dart';
 import 'package:translator_app/ui/stateSlang/selangor.dart';
+import 'package:translator_app/ui/stateSlang/johor.dart';
+import 'package:translator_app/ui/stateSlang/kedah.dart';
+import 'package:translator_app/ui/stateSlang/kelantan.dart';
+import 'package:translator_app/ui/stateSlang/melaka.dart';
+import 'package:translator_app/ui/stateSlang/nismilan.dart';
+import 'package:translator_app/ui/stateSlang/pahang.dart';
+import 'package:translator_app/ui/stateSlang/perak.dart';
+import 'package:translator_app/ui/stateSlang/perlis.dart';
+import 'package:translator_app/ui/stateSlang/pinang.dart';
+import 'package:translator_app/ui/stateSlang/sabah.dart';
+import 'package:translator_app/ui/stateSlang/sarawak.dart';
+import 'package:translator_app/ui/stateSlang/terengganu.dart';
 
 class Choice {
   const Choice({required this.title, required this.image});
@@ -51,28 +63,44 @@ class SelectCardSlang extends StatelessWidget {
                     'prefsListNegeri', SelangorList.selangor);
               } else if (choice.title == StateEnum.johor) {
                 await prefs.setString('prefsNegeri', StateEnum.johor);
+                await prefs.setStringList('prefsListNegeri', JohorList.johor);
               } else if (choice.title == StateEnum.nismilan) {
                 await prefs.setString('prefsNegeri', StateEnum.nismilan);
+                await prefs.setStringList(
+                    'prefsListNegeri', NismilanList.nismilan);
               } else if (choice.title == StateEnum.melaka) {
                 await prefs.setString('prefsNegeri', StateEnum.melaka);
+                await prefs.setStringList('prefsListNegeri', MelakaList.melaka);
               } else if (choice.title == StateEnum.kelantan) {
                 await prefs.setString('prefsNegeri', StateEnum.kelantan);
+                await prefs.setStringList(
+                    'prefsListNegeri', KelantanList.kelantan);
               } else if (choice.title == StateEnum.kedah) {
                 await prefs.setString('prefsNegeri', StateEnum.kedah);
+                await prefs.setStringList('prefsListNegeri', KedahList.kedah);
               } else if (choice.title == StateEnum.pahang) {
                 await prefs.setString('prefsNegeri', StateEnum.pahang);
+                await prefs.setStringList('prefsListNegeri', PahangList.pahang);
               } else if (choice.title == StateEnum.perak) {
                 await prefs.setString('prefsNegeri', StateEnum.perak);
+                await prefs.setStringList('prefsListNegeri', PerakList.perak);
               } else if (choice.title == StateEnum.perlis) {
                 await prefs.setString('prefsNegeri', StateEnum.perlis);
+                await prefs.setStringList('prefsListNegeri', PerlisList.perlis);
               } else if (choice.title == StateEnum.pinang) {
                 await prefs.setString('prefsNegeri', StateEnum.pinang);
+                await prefs.setStringList('prefsListNegeri', PinangList.pinang);
               } else if (choice.title == StateEnum.sabah) {
                 await prefs.setString('prefsNegeri', StateEnum.sabah);
+                await prefs.setStringList('prefsListNegeri', SabahList.sabah);
               } else if (choice.title == StateEnum.sarawak) {
                 await prefs.setString('prefsNegeri', StateEnum.sarawak);
+                await prefs.setStringList(
+                    'prefsListNegeri', SarawakList.sarawak);
               } else if (choice.title == StateEnum.terengganu) {
                 await prefs.setString('prefsNegeri', StateEnum.terengganu);
+                await prefs.setStringList(
+                    'prefsListNegeri', TerengganuList.terengganu);
               }
 
               var slang = prefs.getString('prefsNegeri');

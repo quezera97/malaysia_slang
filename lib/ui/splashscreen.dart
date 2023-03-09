@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/ui/selectSlang.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,6 +15,9 @@ class StartState extends State<SplashScreen> {
   }
 
   startTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+
     var duration = const Duration(seconds: 4);
     return Timer(duration, routeDashboardMain);
   }

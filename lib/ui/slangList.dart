@@ -54,7 +54,6 @@ class _SlangListState extends State<SlangList> {
           ),
         ),
         body: ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: widget.selectedSlangList.length,
             itemBuilder: (context, index) {
