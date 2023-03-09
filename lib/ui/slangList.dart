@@ -1,11 +1,22 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator_app/ui/widget/listTileDashboard.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:translator_app/ui/widget/expansionTile.dart';
 
-class MainDashboard extends StatelessWidget {
-  const MainDashboard();
+class SlangList extends StatefulWidget {
+  final String selectedSlang;
+  final List<String> selectedSlangList;
 
+  SlangList(
+      {Key? key, required this.selectedSlang, required this.selectedSlangList})
+      : super(key: key);
+
+  State<SlangList> createState() => _SlangListState();
+}
+
+class _SlangListState extends State<SlangList> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: HexColor('#EDE9D5'),
@@ -15,6 +26,7 @@ class MainDashboard extends StatelessWidget {
             onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
               await prefs.remove('prefsNegeri');
+              await prefs.remove('prefsListNegeri');
 
               Navigator.pop(context);
             },
@@ -41,16 +53,19 @@ class MainDashboard extends StatelessWidget {
             ),
           ),
         ),
-        body: GridView.count(
-            padding: EdgeInsets.all(10),
-            childAspectRatio: 1.7,
-            crossAxisCount: 2,
-            crossAxisSpacing: 5.0,
-            mainAxisSpacing: 5.0,
-            children: List.generate(dashboardChoices.length, (index) {
-              return Center(
-                child: ListTileDashboard(choice: dashboardChoices[index]),
+        body: ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: widget.selectedSlangList.length,
+            itemBuilder: (context, index) {
+              var splittedAccommodationList =
+                  widget.selectedSlangList[index].split("+");
+
+              return ExpansionTileWidget(
+                expansionTileTitle: splittedAccommodationList[0],
+                listTileTitle: splittedAccommodationList[1],
+                assetUrl: splittedAccommodationList[2],
               );
-            })));
+            }));
   }
 }

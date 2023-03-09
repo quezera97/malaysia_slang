@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/enum/stateEnum.dart';
-import 'package:translator_app/ui/dashboard.dart';
+import 'package:translator_app/ui/slangList.dart';
+import 'package:translator_app/ui/stateSlang/kl.dart';
+import 'package:translator_app/ui/stateSlang/selangor.dart';
 
 class Choice {
   const Choice({required this.title, required this.image});
@@ -42,8 +44,11 @@ class SelectCardSlang extends StatelessWidget {
 
               if (choice.title == StateEnum.kl) {
                 await prefs.setString('prefsNegeri', StateEnum.kl);
+                await prefs.setStringList('prefsListNegeri', KlList.kl);
               } else if (choice.title == StateEnum.selangor) {
                 await prefs.setString('prefsNegeri', StateEnum.selangor);
+                await prefs.setStringList(
+                    'prefsListNegeri', SelangorList.selangor);
               } else if (choice.title == StateEnum.johor) {
                 await prefs.setString('prefsNegeri', StateEnum.johor);
               } else if (choice.title == StateEnum.nismilan) {
@@ -70,8 +75,15 @@ class SelectCardSlang extends StatelessWidget {
                 await prefs.setString('prefsNegeri', StateEnum.terengganu);
               }
 
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MainDashboard()));
+              var slang = prefs.getString('prefsNegeri');
+              var listSlang = prefs.getStringList('prefsListNegeri');
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SlangList(
+                          selectedSlang: slang!,
+                          selectedSlangList: listSlang!)));
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),

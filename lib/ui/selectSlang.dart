@@ -3,8 +3,6 @@ import 'package:translator_app/ui/widget/selectCardSlang.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class SelectSlang extends StatelessWidget {
-  const SelectSlang();
-
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: HexColor('#EDE9D5'),

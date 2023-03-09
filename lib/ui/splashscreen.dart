@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:translator_app/ui/slang.dart';
+import 'package:translator_app/ui/selectSlang.dart';
 
 class SplashScreen extends StatefulWidget {
   State<StatefulWidget> createState() => StartState();
