@@ -38,16 +38,22 @@ class _SlangListState extends State<SlangList> {
             text: TextSpan(
               children: <TextSpan>[
                 TextSpan(
-                    text: 'Flutter',
+                    text: 'Slang - ',
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF121212),
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
-                    text: 'Translate',
+                    text: 'Malay - ',
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.blue,
+                        fontFamily: 'PoppinsBold')),
+                TextSpan(
+                    text: 'English',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Color(0xFF121212),
                         fontFamily: 'PoppinsBold')),
               ],
             ),
@@ -61,9 +67,9 @@ class _SlangListState extends State<SlangList> {
                   widget.selectedSlangList[index].split("+");
 
               return ExpansionTileWidget(
-                expansionTileTitle: splittedAccommodationList[0],
-                listTileTitle: splittedAccommodationList[1],
-                assetUrl: splittedAccommodationList[2],
+                slangTitle: splittedAccommodationList[0],
+                malayTitle: splittedAccommodationList[1],
+                englishTitle: splittedAccommodationList[2],
               );
             }));
   }

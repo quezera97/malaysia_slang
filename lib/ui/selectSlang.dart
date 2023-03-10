@@ -14,16 +14,22 @@ class SelectSlang extends StatelessWidget {
             text: TextSpan(
               children: <TextSpan>[
                 TextSpan(
-                    text: 'Flutter',
+                    text: 'Slang - ',
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF121212),
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
-                    text: 'Translate',
+                    text: 'Malay - ',
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.blue,
+                        fontFamily: 'PoppinsBold')),
+                TextSpan(
+                    text: 'English',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Color(0xFF121212),
                         fontFamily: 'PoppinsBold')),
               ],
             ),
