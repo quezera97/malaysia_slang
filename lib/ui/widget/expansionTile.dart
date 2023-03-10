@@ -29,6 +29,7 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
         children: <Widget>[
           ListTile(
               title: Text(widget.listTileTitle),
+              subtitle: Text(widget.listTileTitle),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
