@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/enum/stateEnum.dart';
 import 'package:translator_app/ui/slangList.dart';
-import 'package:translator_app/ui/stateSlang/kl.dart';
-import 'package:translator_app/ui/stateSlang/selangor.dart';
+import 'package:translator_app/ui/stateSlang/klselangor.dart';
 import 'package:translator_app/ui/stateSlang/johor.dart';
 import 'package:translator_app/ui/stateSlang/kedah.dart';
 import 'package:translator_app/ui/stateSlang/kelantan.dart';
@@ -24,8 +23,7 @@ class Choice {
 }
 
 List<Choice> slangChoices = <Choice>[
-  Choice(title: StateEnum.kl, image: 'assets/img/kl.png'),
-  Choice(title: StateEnum.selangor, image: 'assets/img/selangor.png'),
+  Choice(title: StateEnum.klselangor, image: 'assets/img/klselangor.png'),
   Choice(title: StateEnum.johor, image: 'assets/img/johor.png'),
   Choice(title: StateEnum.nismilan, image: 'assets/img/nismilan.png'),
   Choice(title: StateEnum.melaka, image: 'assets/img/melaka.png'),
@@ -54,13 +52,10 @@ class SelectCardSlang extends StatelessWidget {
             onTap: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
 
-              if (choice.title == StateEnum.kl) {
-                await prefs.setString('prefsNegeri', StateEnum.kl);
-                await prefs.setStringList('prefsListNegeri', KlList.kl);
-              } else if (choice.title == StateEnum.selangor) {
-                await prefs.setString('prefsNegeri', StateEnum.selangor);
+              if (choice.title == StateEnum.klselangor) {
+                await prefs.setString('prefsNegeri', StateEnum.klselangor);
                 await prefs.setStringList(
-                    'prefsListNegeri', SelangorList.selangor);
+                    'prefsListNegeri', KlSelangorList.klselangor);
               } else if (choice.title == StateEnum.johor) {
                 await prefs.setString('prefsNegeri', StateEnum.johor);
                 await prefs.setStringList('prefsListNegeri', JohorList.johor);

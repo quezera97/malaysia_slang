@@ -1,6 +1,5 @@
 class StateEnum {
-  static String get kl => 'K. Lumpur';
-  static String get selangor => 'Selangor';
+  static String get klselangor => 'Selangor/K. Lumpur';
   static String get johor => 'Johor';
   static String get nismilan => 'N. Sembilan';
   static String get melaka => 'Melaka';
