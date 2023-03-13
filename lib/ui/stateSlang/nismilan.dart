@@ -14,7 +14,7 @@ class NismilanList {
     'Biso + Bisa + Venom',
     'Bodobin + Jatuh + Fall',
     'Boghek + Berat + Heavy',
-    'Boie + Beri + Give',
+    'Boie/Bori + Beri + Give',
     'Bolah + Belah + Cut',
     'Boleng + Telanjang + Naked',
     'Bona + Sangat/Benar + Very',
