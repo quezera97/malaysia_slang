@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/enum/stateEnum.dart';
+import 'package:translator_app/ui/settings.dart';
 import 'package:translator_app/ui/slangList.dart';
 import 'package:translator_app/ui/stateSlang/klselangor.dart';
 import 'package:translator_app/ui/stateSlang/johor.dart';
@@ -25,10 +26,10 @@ class Choice {
 List<Choice> slangChoices = <Choice>[
   Choice(title: StateEnum.klselangor, image: 'assets/img/klselangor.png'),
   Choice(title: StateEnum.johor, image: 'assets/img/johor.png'),
-  Choice(title: StateEnum.nismilan, image: 'assets/img/nismilan.png'),
-  Choice(title: StateEnum.melaka, image: 'assets/img/melaka.png'),
-  Choice(title: StateEnum.kelantan, image: 'assets/img/kelantan.png'),
   Choice(title: StateEnum.kedah, image: 'assets/img/kedah.png'),
+  Choice(title: StateEnum.kelantan, image: 'assets/img/kelantan.png'),
+  Choice(title: StateEnum.melaka, image: 'assets/img/melaka.png'),
+  Choice(title: StateEnum.nismilan, image: 'assets/img/nismilan.png'),
   Choice(title: StateEnum.pahang, image: 'assets/img/pahang.png'),
   Choice(title: StateEnum.perak, image: 'assets/img/perak.png'),
   Choice(title: StateEnum.perlis, image: 'assets/img/perlis.png'),
@@ -98,15 +99,14 @@ class SelectCardSlang extends StatelessWidget {
                     'prefsListNegeri', TerengganuList.terengganu);
               }
 
-              var slang = prefs.getString('prefsNegeri');
-              var listSlang = prefs.getStringList('prefsListNegeri');
-
-              Navigator.push(
-                  context,
+              if(choice.title == StateEnum.settings){
+                Navigator.push(context,
                   MaterialPageRoute(
-                      builder: (context) => SlangList(
-                          selectedSlang: slang!,
-                          selectedSlangList: listSlang!)));
+                      builder: (context) => Settings()));
+              }
+              else{
+                slangListFunc(context, prefs);
+              }
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -130,4 +130,16 @@ class SelectCardSlang extends StatelessWidget {
               ),
             )));
   }
+}
+
+void slangListFunc(context, prefs){
+  var slang = prefs.getString('prefsNegeri');
+  var listSlang = prefs.getStringList('prefsListNegeri');
+
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => SlangList(
+              selectedSlang: slang!,
+              selectedSlangList: listSlang!)));
 }

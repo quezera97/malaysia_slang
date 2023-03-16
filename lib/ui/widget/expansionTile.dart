@@ -3,6 +3,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:translator_app/ui/report.dart';
 import 'package:translator_app/ui/widget/snackBar.dart';
 
 class ExpansionTileWidget extends StatefulWidget {
@@ -26,6 +27,7 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
   Widget build(BuildContext context) {
     return ExpansionTile(
         title: Text(widget.slangTitle),
+        subtitle: Text(widget.malayTitle),
         leading: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -33,7 +35,7 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
               icon: Icon(Icons.more_vert),
               itemBuilder: (context) {
                 return [
-                  PopupMenuItem(
+                  PopupMenuItem(                    
                     child: Text('Copy'),
                     onTap: () async {
                       await Clipboard.setData(
@@ -43,14 +45,22 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
                           labelContent: 'Close');
                     },
                   ),
+                  PopupMenuItem(
+                    child: Text('Report'),
+                    onTap: () => Future(
+                      () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => Report(word: widget.slangTitle)),
+                      ),
+                    ),
+                  ),
                 ];
               },
             ),
           ],
         ),
         children: <Widget>[
-          ExpansionTile(
-            title: Text(widget.malayTitle),
+          ListTile(
+            title: Text(widget.englishTitle),
             leading: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -62,43 +72,25 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
                         child: Text('Copy'),
                         onTap: () async {
                           await Clipboard.setData(
-                              ClipboardData(text: widget.malayTitle));
+                              ClipboardData(text: widget.englishTitle));
                           SnackBarWidget.succesSnackbar(context,
                               snackBarContent: 'Copied to clipboard!',
                               labelContent: 'Close');
                         },
+                      ),
+                      PopupMenuItem(
+                        child: Text('Report'),
+                        onTap: () => Future(
+                          () => Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => Report(word: widget.englishTitle)),
+                          ),
+                        ),
                       ),
                     ];
                   },
                 ),
               ],
             ),
-            children: [
-              ListTile(
-                  title: Text(widget.englishTitle),
-                  leading: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      PopupMenuButton(
-                        icon: Icon(Icons.more_vert),
-                        itemBuilder: (context) {
-                          return [
-                            PopupMenuItem(
-                              child: Text('Copy'),
-                              onTap: () async {
-                                await Clipboard.setData(
-                                    ClipboardData(text: widget.englishTitle));
-                                SnackBarWidget.succesSnackbar(context,
-                                    snackBarContent: 'Copied to clipboard!',
-                                    labelContent: 'Close');
-                              },
-                            ),
-                          ];
-                        },
-                      ),
-                    ],
-                  )),
-            ],
           )
         ]);
   }

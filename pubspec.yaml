@@ -29,6 +29,7 @@ dependencies:
   shared_preferences: ^2.0.18
   favorite_button: ^0.0.4
   hexcolor: ^3.0.1
+  flutter_email_sender: ^5.2.0
 
 dev_dependencies:
   flutter_test:

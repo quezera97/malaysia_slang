@@ -12,4 +12,5 @@ class StateEnum {
   static String get sabah => 'Sabah';
   static String get sarawak => 'Sarawak';
   static String get terengganu => 'Terengganu';
+  static String get settings => 'Setting';
 }
