@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:translator_app/ui/searchAll.dart';
+import 'package:translator_app/ui/translation.dart';
 import 'package:translator_app/ui/widget/selectCardSlang.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -9,7 +11,7 @@ class SelectSlang extends StatelessWidget {
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: HexColor('#FFACAC'),
-          centerTitle: true,
+          centerTitle: false,
           title: RichText(
             text: TextSpan(
               children: <TextSpan>[
@@ -34,6 +36,34 @@ class SelectSlang extends StatelessWidget {
               ],
             ),
           ),
+          actions: <Widget>[
+            Row(
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.g_translate_rounded,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TranslationPage()));
+                  },
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SearchAll()));
+                  },
+                ),
+              ],
+            )
+          ],
         ),
         body: GridView.count(
             padding: EdgeInsets.all(10),

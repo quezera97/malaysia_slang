@@ -30,6 +30,7 @@ dependencies:
   favorite_button: ^0.0.4
   hexcolor: ^3.0.1
   flutter_email_sender: ^5.2.0
+  connectivity_plus: ^3.0.3
 
 dev_dependencies:
   flutter_test:

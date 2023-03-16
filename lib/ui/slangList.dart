@@ -63,13 +63,12 @@ class _SlangListState extends State<SlangList> {
             shrinkWrap: true,
             itemCount: widget.selectedSlangList.length,
             itemBuilder: (context, index) {
-              var splittedAccommodationList =
-                  widget.selectedSlangList[index].split("+");
+              var splittedList = widget.selectedSlangList[index].split("+");
 
               return ExpansionTileWidget(
-                slangTitle: splittedAccommodationList[0],
-                malayTitle: splittedAccommodationList[1],
-                englishTitle: splittedAccommodationList[2],
+                slangTitle: splittedList[0],
+                malayTitle: splittedList[1],
+                englishTitle: splittedList[2],
               );
             }));
   }
