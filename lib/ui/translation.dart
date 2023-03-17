@@ -92,14 +92,20 @@ class _TranslationPageState extends State<TranslationPage> {
               TextSpan(
                   text: 'English - ',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Color(0xFF121212),
                       fontFamily: 'PoppinsBold')),
               TextSpan(
-                  text: 'Malay',
+                  text: 'Malay ',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Colors.blue,
+                      fontFamily: 'PoppinsBold')),
+              TextSpan(
+                  text: '( Translation )',
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: Color(0xFF121212),
                       fontFamily: 'PoppinsBold')),
             ],
           ),
@@ -113,6 +119,7 @@ class _TranslationPageState extends State<TranslationPage> {
               Padding(
                 padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextField(
+                  style: TextStyle(fontSize: 20),
                   controller: englishLanguage,
                   decoration: InputDecoration(
                     suffixIcon: IconButton(
@@ -142,14 +149,38 @@ class _TranslationPageState extends State<TranslationPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    child: RichText(
+                      text: const TextSpan(
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: 'Malay',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Color(0xFF121212),
+                                fontFamily: 'PoppinsBold')),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                 child: Center(
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 3.5,
                     decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.white,
+                      color: HexColor('#EDE9D5'),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(
@@ -157,11 +188,12 @@ class _TranslationPageState extends State<TranslationPage> {
                       child: SelectableText(
                         malayLanguage,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
+                          fontSize: 20,
                           fontFamily: 'PoppinsReg',
                         ),
                         showCursor: true,
-                        cursorColor: Colors.white,
+                        cursorColor: Colors.black,
                         minLines: 5,
                         maxLines: 999,
                         scrollPhysics: ClampingScrollPhysics(),

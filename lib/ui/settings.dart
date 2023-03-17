@@ -14,7 +14,7 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         leading: BackButton(
           color: Colors.black,
-          onPressed: () async {
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -27,19 +27,19 @@ class _SettingsState extends State<Settings> {
               TextSpan(
                   text: 'Slang - ',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Color(0xFF121212),
                       fontFamily: 'PoppinsBold')),
               TextSpan(
                   text: 'Malay - ',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Colors.blue,
                       fontFamily: 'PoppinsBold')),
               TextSpan(
                   text: 'English',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Color(0xFF121212),
                       fontFamily: 'PoppinsBold')),
             ],
@@ -48,7 +48,6 @@ class _SettingsState extends State<Settings> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.blue,
         ),
       ),
     );

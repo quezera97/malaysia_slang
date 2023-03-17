@@ -40,19 +40,19 @@ class _SlangListState extends State<SlangList> {
                 TextSpan(
                     text: 'Slang - ',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                         color: Color(0xFF121212),
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
                     text: 'Malay - ',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                         color: Colors.blue,
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
                     text: 'English',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                         color: Color(0xFF121212),
                         fontFamily: 'PoppinsBold')),
               ],

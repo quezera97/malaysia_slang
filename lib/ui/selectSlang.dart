@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:translator_app/ui/searchAll.dart';
+import 'package:translator_app/ui/settings.dart';
 import 'package:translator_app/ui/translation.dart';
 import 'package:translator_app/ui/widget/selectCardSlang.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -18,19 +19,19 @@ class SelectSlang extends StatelessWidget {
                 TextSpan(
                     text: 'Slang - ',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                         color: Color(0xFF121212),
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
                     text: 'Malay - ',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                         color: Colors.blue,
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
                     text: 'English',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                         color: Color(0xFF121212),
                         fontFamily: 'PoppinsBold')),
               ],
@@ -59,6 +60,16 @@ class SelectSlang extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SearchAll()));
+                  },
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.settings,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Settings()));
                   },
                 ),
               ],

@@ -34,19 +34,19 @@ class _ReportState extends State<Report> {
               TextSpan(
                   text: 'Slang - ',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Color(0xFF121212),
                       fontFamily: 'PoppinsBold')),
               TextSpan(
                   text: 'Malay - ',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Colors.blue,
                       fontFamily: 'PoppinsBold')),
               TextSpan(
                   text: 'English',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Color(0xFF121212),
                       fontFamily: 'PoppinsBold')),
             ],
@@ -75,7 +75,7 @@ class _ReportState extends State<Report> {
                               TextSpan(
                                   text: 'Word',
                                   style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 15,
                                       color: Color(0xFF121212),
                                       fontFamily: 'PoppinsBold')),
                             ],
@@ -105,13 +105,13 @@ class _ReportState extends State<Report> {
                               TextSpan(
                                   text: 'Report Details',
                                   style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 15,
                                       color: Color(0xFF121212),
                                       fontFamily: 'PoppinsBold')),
                               TextSpan(
                                   text: '*',
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 15,
                                     color: Colors.red,
                                   )),
                             ],
@@ -159,7 +159,7 @@ class _ReportState extends State<Report> {
                             //     const Size(332, 50)),
                           ),
                           child: const Text('Report',
-                              style: TextStyle(fontSize: 18)),
+                              style: TextStyle(fontSize: 15)),
                         )),
                   ],
                 ),

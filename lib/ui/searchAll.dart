@@ -56,19 +56,19 @@ class _SearchAllState extends State<SearchAll> {
               TextSpan(
                   text: 'Slang - ',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Color(0xFF121212),
                       fontFamily: 'PoppinsBold')),
               TextSpan(
                   text: 'Malay - ',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Colors.blue,
                       fontFamily: 'PoppinsBold')),
               TextSpan(
                   text: 'English',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Color(0xFF121212),
                       fontFamily: 'PoppinsBold')),
             ],
@@ -103,11 +103,15 @@ class _SearchAllState extends State<SearchAll> {
 
                 var splittedList = items[index].split("+");
 
-                return ExpansionTileWidget(
-                  slangTitle: splittedList[0],
-                  malayTitle: splittedList[1],
-                  englishTitle: splittedList[2],
-                );
+                if (searchedValue.isNotEmpty){
+                  return ExpansionTileWidget(
+                    slangTitle: splittedList[0],
+                    malayTitle: splittedList[1],
+                    englishTitle: splittedList[2],
+                  );
+                }
+                
+                return null;
               },
             ),
           ),

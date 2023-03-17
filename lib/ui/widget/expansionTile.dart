@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:translator_app/ui/report.dart';
 import 'package:translator_app/ui/widget/snackBar.dart';
-
+import 'package:share_plus/share_plus.dart';
 class ExpansionTileWidget extends StatefulWidget {
   final String slangTitle;
   final String malayTitle;
@@ -45,6 +45,12 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
                           labelContent: 'Close');
                     },
                   ),
+                  PopupMenuItem(                    
+                    child: Text('Share'),
+                    onTap: () async {
+                      Share.share(widget.slangTitle);
+                    },
+                  ),
                   PopupMenuItem(
                     child: Text('Report'),
                     onTap: () => Future(
@@ -60,8 +66,11 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
         ),
         children: <Widget>[
           ListTile(
-            title: Text(widget.englishTitle),
-            leading: Row(
+            title: Align(
+              alignment: Alignment.centerRight,
+              child: Text(widget.englishTitle),
+            ),
+            trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 PopupMenuButton(
@@ -76,6 +85,12 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
                           SnackBarWidget.succesSnackbar(context,
                               snackBarContent: 'Copied to clipboard!',
                               labelContent: 'Close');
+                        },
+                      ),
+                      PopupMenuItem(                    
+                        child: Text('Share'),
+                        onTap: () async {
+                          Share.share(widget.englishTitle);
                         },
                       ),
                       PopupMenuItem(
