@@ -8,31 +8,31 @@ import 'package:hexcolor/hexcolor.dart';
 class SelectSlang extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: HexColor('#EDE9D5'),
+        backgroundColor: HexColor('#66347F'),
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: HexColor('#FFACAC'),
+          backgroundColor: HexColor('#37306B'),
           centerTitle: false,
           title: RichText(
             text: TextSpan(
               children: <TextSpan>[
                 TextSpan(
-                    text: 'Slang - ',
+                    text: 'Slang',
                     style: TextStyle(
                         fontSize: 15,
-                        color: Color(0xFF121212),
+                        color: Colors.white,
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
-                    text: 'Malay - ',
+                    text: ' - Malay - ',
                     style: TextStyle(
                         fontSize: 15,
-                        color: Colors.blue,
+                        color: Colors.yellow,
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
                     text: 'English',
                     style: TextStyle(
                         fontSize: 15,
-                        color: Color(0xFF121212),
+                        color: Colors.white,
                         fontFamily: 'PoppinsBold')),
               ],
             ),
@@ -43,7 +43,7 @@ class SelectSlang extends StatelessWidget {
                 IconButton(
                   icon: Icon(
                     Icons.g_translate_rounded,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -55,7 +55,7 @@ class SelectSlang extends StatelessWidget {
                 IconButton(
                   icon: Icon(
                     Icons.search,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                   onPressed: () {
                     Navigator.push(context,
@@ -65,7 +65,7 @@ class SelectSlang extends StatelessWidget {
                 IconButton(
                   icon: Icon(
                     Icons.settings,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                   onPressed: () {
                     Navigator.push(context,

@@ -84,28 +84,23 @@ class _TranslationPageState extends State<TranslationPage> {
             Navigator.pop(context);
           },
         ),
+        elevation: 0.0,
+        backgroundColor: HexColor('#37306B'),
         centerTitle: true,
-        backgroundColor: HexColor('#FFACAC'),
         title: RichText(
           text: TextSpan(
             children: <TextSpan>[
               TextSpan(
-                  text: 'English - ',
+                  text: 'English',
                   style: TextStyle(
                       fontSize: 15,
-                      color: Color(0xFF121212),
+                      color: Colors.white,
                       fontFamily: 'PoppinsBold')),
               TextSpan(
-                  text: 'Malay ',
+                  text: ' - Malay',
                   style: TextStyle(
                       fontSize: 15,
-                      color: Colors.blue,
-                      fontFamily: 'PoppinsBold')),
-              TextSpan(
-                  text: '( Translation )',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFF121212),
+                      color: Colors.yellow,
                       fontFamily: 'PoppinsBold')),
             ],
           ),
@@ -162,9 +157,9 @@ class _TranslationPageState extends State<TranslationPage> {
                           TextSpan(
                               text: 'Malay',
                               style: TextStyle(
-                                fontSize: 15,
-                                color: Color(0xFF121212),
-                                fontFamily: 'PoppinsBold')),
+                                  fontSize: 15,
+                                  color: Color(0xFF121212),
+                                  fontFamily: 'PoppinsBold')),
                         ],
                       ),
                     ),

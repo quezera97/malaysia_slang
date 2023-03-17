@@ -32,28 +32,28 @@ class _SlangListState extends State<SlangList> {
             },
           ),
           elevation: 0.0,
-          backgroundColor: HexColor('#FFACAC'),
+          backgroundColor: HexColor('#37306B'),
           centerTitle: true,
           title: RichText(
             text: TextSpan(
               children: <TextSpan>[
                 TextSpan(
-                    text: 'Slang - ',
+                    text: 'Slang',
                     style: TextStyle(
                         fontSize: 15,
-                        color: Color(0xFF121212),
+                        color: Colors.white,
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
-                    text: 'Malay - ',
+                    text: ' - Malay - ',
                     style: TextStyle(
                         fontSize: 15,
-                        color: Colors.blue,
+                        color: Colors.yellow,
                         fontFamily: 'PoppinsBold')),
                 TextSpan(
                     text: 'English',
                     style: TextStyle(
                         fontSize: 15,
-                        color: Color(0xFF121212),
+                        color: Colors.white,
                         fontFamily: 'PoppinsBold')),
               ],
             ),

@@ -4,8 +4,10 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:translator_app/ui/report.dart';
+import 'package:translator_app/ui/widget/leadingIconText.dart';
 import 'package:translator_app/ui/widget/snackBar.dart';
 import 'package:share_plus/share_plus.dart';
+
 class ExpansionTileWidget extends StatefulWidget {
   final String slangTitle;
   final String malayTitle;
@@ -35,8 +37,8 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
               icon: Icon(Icons.more_vert),
               itemBuilder: (context) {
                 return [
-                  PopupMenuItem(                    
-                    child: Text('Copy'),
+                  PopupMenuItem(
+                    child: LeadIconText(icon: Icons.copy, text: 'Copy'),
                     onTap: () async {
                       await Clipboard.setData(
                           ClipboardData(text: widget.slangTitle));
@@ -45,17 +47,18 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
                           labelContent: 'Close');
                     },
                   ),
-                  PopupMenuItem(                    
-                    child: Text('Share'),
+                  PopupMenuItem(
+                    child: LeadIconText(icon: Icons.share, text: 'Share'),
                     onTap: () async {
                       Share.share(widget.slangTitle);
                     },
                   ),
                   PopupMenuItem(
-                    child: Text('Report'),
+                    child: LeadIconText(icon: Icons.report, text: 'Report'),
                     onTap: () => Future(
                       () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => Report(word: widget.slangTitle)),
+                        MaterialPageRoute(
+                            builder: (_) => Report(word: widget.slangTitle)),
                       ),
                     ),
                   ),
@@ -78,7 +81,7 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
                   itemBuilder: (context) {
                     return [
                       PopupMenuItem(
-                        child: Text('Copy'),
+                        child: LeadIconText(icon: Icons.copy, text: 'Copy'),
                         onTap: () async {
                           await Clipboard.setData(
                               ClipboardData(text: widget.englishTitle));
@@ -87,17 +90,19 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
                               labelContent: 'Close');
                         },
                       ),
-                      PopupMenuItem(                    
-                        child: Text('Share'),
+                      PopupMenuItem(
+                        child: LeadIconText(icon: Icons.share, text: 'Share'),
                         onTap: () async {
                           Share.share(widget.englishTitle);
                         },
                       ),
                       PopupMenuItem(
-                        child: Text('Report'),
+                        child: LeadIconText(icon: Icons.report, text: 'Report'),
                         onTap: () => Future(
                           () => Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) => Report(word: widget.englishTitle)),
+                            MaterialPageRoute(
+                                builder: (_) =>
+                                    Report(word: widget.englishTitle)),
                           ),
                         ),
                       ),

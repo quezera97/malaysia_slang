@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:translator_app/enum/stateEnum.dart';
 import 'package:translator_app/ui/settings.dart';
 import 'package:translator_app/ui/slangList.dart';
@@ -46,7 +47,7 @@ class SelectCardSlang extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         elevation: 10,
-        color: Colors.white,
+        color: HexColor('#EDE9D5'),
         shadowColor: Colors.grey,
         clipBehavior: Clip.hardEdge,
         child: InkWell(
@@ -99,12 +100,10 @@ class SelectCardSlang extends StatelessWidget {
                     'prefsListNegeri', TerengganuList.terengganu);
               }
 
-              if(choice.title == StateEnum.settings){
+              if (choice.title == StateEnum.settings) {
                 Navigator.push(context,
-                  MaterialPageRoute(
-                      builder: (context) => Settings()));
-              }
-              else{
+                    MaterialPageRoute(builder: (context) => Settings()));
+              } else {
                 slangListFunc(context, prefs);
               }
             },
@@ -132,14 +131,13 @@ class SelectCardSlang extends StatelessWidget {
   }
 }
 
-void slangListFunc(context, prefs){
+void slangListFunc(context, prefs) {
   var slang = prefs.getString('prefsNegeri');
   var listSlang = prefs.getStringList('prefsListNegeri');
 
   Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => SlangList(
-              selectedSlang: slang!,
-              selectedSlangList: listSlang!)));
+          builder: (context) =>
+              SlangList(selectedSlang: slang!, selectedSlangList: listSlang!)));
 }

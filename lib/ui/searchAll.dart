@@ -40,6 +40,7 @@ class _SearchAllState extends State<SearchAll> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor('#EDE9D5'),
       appBar: AppBar(
         leading: BackButton(
           color: Colors.black,
@@ -48,28 +49,28 @@ class _SearchAllState extends State<SearchAll> {
           },
         ),
         elevation: 0.0,
-        backgroundColor: HexColor('#FFACAC'),
+        backgroundColor: HexColor('#37306B'),
         centerTitle: true,
         title: RichText(
           text: TextSpan(
             children: <TextSpan>[
               TextSpan(
-                  text: 'Slang - ',
+                  text: 'Slang',
                   style: TextStyle(
                       fontSize: 15,
-                      color: Color(0xFF121212),
+                      color: Colors.white,
                       fontFamily: 'PoppinsBold')),
               TextSpan(
-                  text: 'Malay - ',
+                  text: ' - Malay - ',
                   style: TextStyle(
                       fontSize: 15,
-                      color: Colors.blue,
+                      color: Colors.yellow,
                       fontFamily: 'PoppinsBold')),
               TextSpan(
                   text: 'English',
                   style: TextStyle(
                       fontSize: 15,
-                      color: Color(0xFF121212),
+                      color: Colors.white,
                       fontFamily: 'PoppinsBold')),
             ],
           ),
@@ -103,14 +104,14 @@ class _SearchAllState extends State<SearchAll> {
 
                 var splittedList = items[index].split("+");
 
-                if (searchedValue.isNotEmpty){
+                if (searchedValue.isNotEmpty) {
                   return ExpansionTileWidget(
                     slangTitle: splittedList[0],
                     malayTitle: splittedList[1],
                     englishTitle: splittedList[2],
                   );
                 }
-                
+
                 return null;
               },
             ),

@@ -26,28 +26,28 @@ class _ReportState extends State<Report> {
           },
         ),
         elevation: 0.0,
-        backgroundColor: HexColor('#FFACAC'),
+        backgroundColor: HexColor('#37306B'),
         centerTitle: true,
         title: RichText(
           text: TextSpan(
             children: <TextSpan>[
               TextSpan(
-                  text: 'Slang - ',
+                  text: 'Slang',
                   style: TextStyle(
                       fontSize: 15,
-                      color: Color(0xFF121212),
+                      color: Colors.white,
                       fontFamily: 'PoppinsBold')),
               TextSpan(
-                  text: 'Malay - ',
+                  text: ' - Malay - ',
                   style: TextStyle(
                       fontSize: 15,
-                      color: Colors.blue,
+                      color: Colors.yellow,
                       fontFamily: 'PoppinsBold')),
               TextSpan(
                   text: 'English',
                   style: TextStyle(
                       fontSize: 15,
-                      color: Color(0xFF121212),
+                      color: Colors.white,
                       fontFamily: 'PoppinsBold')),
             ],
           ),
@@ -139,18 +139,25 @@ class _ReportState extends State<Report> {
                         alignment: const Alignment(0, 0.80),
                         child: ElevatedButton(
                           onPressed: () async {
-                            var emailresponse = await send(
-                              reportSubject: reportWordController.text,
-                              reportBody: reportDetailsController.text,
-                            );
+                            if (reportDetailsController.text.isNotEmpty) {
+                              var emailresponse = await send(
+                                reportSubject: reportWordController.text,
+                                reportBody: reportDetailsController.text,
+                              );
 
-                            if (emailresponse != 'success') {
-                              SnackBarWidget.succesSnackbar(context,
-                                  snackBarContent: emailresponse,
+                              if (emailresponse != 'success') {
+                                SnackBarWidget.succesSnackbar(context,
+                                    snackBarContent: emailresponse,
+                                    labelContent: 'Close');
+                              }
+
+                              Navigator.pop(context);
+                            } else {
+                              SnackBarWidget.warningSnackBar(context,
+                                  snackBarContent:
+                                      'Please type in the report text field!',
                                   labelContent: 'Close');
                             }
-
-                            Navigator.pop(context);
                           },
                           style: ButtonStyle(
                             backgroundColor:
