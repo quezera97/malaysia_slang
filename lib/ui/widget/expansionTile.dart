@@ -1,8 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/ui/report.dart';
 import 'package:translator_app/ui/widget/leadingIconText.dart';
 import 'package:translator_app/ui/widget/snackBar.dart';
@@ -25,11 +27,27 @@ class ExpansionTileWidget extends StatefulWidget {
 
 class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
   final audioPlayer = AudioPlayer();
+  late SharedPreferences _prefs;
+  double _resizedFontSize = 16.0;
+
+  void initState() {
+    super.initState();
+    _loadSliderValue();
+  }
+
+  Future<void> _loadSliderValue() async {
+    _prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _resizedFontSize = _prefs.getDouble('prefsResizeText') ?? 16.0;
+    });
+  }
 
   Widget build(BuildContext context) {
     return ExpansionTile(
-        title: Text(widget.slangTitle),
-        subtitle: Text(widget.malayTitle),
+        title: Text(widget.slangTitle,
+            style: TextStyle(fontSize: _resizedFontSize)),
+        subtitle: Text(widget.malayTitle,
+            style: TextStyle(fontSize: _resizedFontSize)),
         leading: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -71,7 +89,8 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
           ListTile(
             title: Align(
               alignment: Alignment.centerRight,
-              child: Text(widget.englishTitle),
+              child: Text(widget.englishTitle,
+                  style: TextStyle(fontSize: _resizedFontSize)),
             ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,

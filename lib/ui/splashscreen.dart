@@ -16,7 +16,8 @@ class StartState extends State<SplashScreen> {
 
   startTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
+    await prefs.remove('prefsNegeri');
+    await prefs.remove('prefsListNegeri');
 
     var duration = const Duration(seconds: 4);
     return Timer(duration, routeDashboardMain);

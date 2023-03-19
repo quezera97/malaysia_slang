@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator/translator.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -13,6 +14,9 @@ class TranslationPage extends StatefulWidget {
 
 class _TranslationPageState extends State<TranslationPage> {
   GoogleTranslator translator = GoogleTranslator();
+
+  late SharedPreferences _prefs;
+  double _resizedFontSize = 16.0;
 
   String malayLanguage = '';
   var englishLanguage = TextEditingController();
@@ -37,6 +41,7 @@ class _TranslationPageState extends State<TranslationPage> {
 
   void initState() {
     super.initState();
+    _loadSliderValue();
     initConnectivity();
 
     _connectivitySubscription =
@@ -46,6 +51,13 @@ class _TranslationPageState extends State<TranslationPage> {
   void dispose() {
     _connectivitySubscription.cancel();
     super.dispose();
+  }
+
+  Future<void> _loadSliderValue() async {
+    _prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _resizedFontSize = _prefs.getDouble('prefsResizeText') ?? 16.0;
+    });
   }
 
   Future<void> initConnectivity() async {
@@ -184,7 +196,7 @@ class _TranslationPageState extends State<TranslationPage> {
                         malayLanguage,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: _resizedFontSize,
                           fontFamily: 'PoppinsReg',
                         ),
                         showCursor: true,
