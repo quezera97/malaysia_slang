@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -11,6 +13,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   late SharedPreferences _prefs;
   double _fontSize = 16.0;
+  final String packageName = 'test';
 
   void initState() {
     super.initState();
@@ -29,6 +32,28 @@ class _SettingsState extends State<Settings> {
     setState(() {
       _fontSize = value;
     });
+  }
+
+  Future<void> _feedbackApp() async {
+    Uri url = Uri.parse(
+        'https://play.google.com/store/apps/details?id=$packageName&showAllReviews=true');
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _shareApp() async {
+    String url =
+        'https://play.google.com/store/apps/details?id=$packageName&showAllReviews=true';
+
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await Share.share(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   Widget build(BuildContext context) {
@@ -81,6 +106,28 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                    child: ListTile(
+                      title: Text(
+                        'Send Feedback',
+                        style: TextStyle(fontSize: _fontSize),
+                        textAlign: TextAlign.left,
+                      ),
+                      onTap: _feedbackApp,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                    child: ListTile(
+                      title: Text(
+                        'Share & Recommend',
+                        style: TextStyle(fontSize: _fontSize),
+                        textAlign: TextAlign.left,
+                      ),
+                      onTap: _shareApp,
+                    ),
+                  )
                 ],
               ),
             ),
