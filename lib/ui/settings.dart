@@ -127,7 +127,18 @@ class _SettingsState extends State<Settings> {
                       ),
                       onTap: _shareApp,
                     ),
-                  )
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                  //   child: ListTile(
+                  //     title: Text(
+                  //       'Add New',
+                  //       style: TextStyle(fontSize: _fontSize),
+                  //       textAlign: TextAlign.left,
+                  //     ),
+                  //     onTap: _shareApp,
+                  //   ),
+                  // ),
                 ],
               ),
             ),

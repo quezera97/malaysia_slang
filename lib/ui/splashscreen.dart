@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator_app/ui/selectSlang.dart';
+import 'package:translator_app/ui/dashboard.dart';
 
 class SplashScreen extends StatefulWidget {
   State<StatefulWidget> createState() => StartState();
@@ -25,7 +25,7 @@ class StartState extends State<SplashScreen> {
 
   routeDashboardMain() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => SelectSlang()));
+        context, MaterialPageRoute(builder: (context) => Dashboard()));
   }
 
   Widget build(BuildContext context) {
