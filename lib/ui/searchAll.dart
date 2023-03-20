@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:translator_app/ui/stateSlang/johor.dart';
+import 'package:translator_app/ui/listStateSlang/johor.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:translator_app/ui/stateSlang/kedah.dart';
-import 'package:translator_app/ui/stateSlang/kelantan.dart';
-import 'package:translator_app/ui/stateSlang/klselangor.dart';
-import 'package:translator_app/ui/stateSlang/melaka.dart';
-import 'package:translator_app/ui/stateSlang/nismilan.dart';
-import 'package:translator_app/ui/stateSlang/pahang.dart';
-import 'package:translator_app/ui/stateSlang/perak.dart';
-import 'package:translator_app/ui/stateSlang/perlis.dart';
-import 'package:translator_app/ui/stateSlang/pinang.dart';
-import 'package:translator_app/ui/stateSlang/sabah.dart';
-import 'package:translator_app/ui/stateSlang/sarawak.dart';
-import 'package:translator_app/ui/stateSlang/terengganu.dart';
-import 'package:translator_app/ui/widget/expansionTile.dart';
+import 'package:translator_app/ui/listStateSlang/kedah.dart';
+import 'package:translator_app/ui/listStateSlang/kelantan.dart';
+import 'package:translator_app/ui/listStateSlang/klselangor.dart';
+import 'package:translator_app/ui/listStateSlang/melaka.dart';
+import 'package:translator_app/ui/listStateSlang/nismilan.dart';
+import 'package:translator_app/ui/listStateSlang/pahang.dart';
+import 'package:translator_app/ui/listStateSlang/perak.dart';
+import 'package:translator_app/ui/listStateSlang/perlis.dart';
+import 'package:translator_app/ui/listStateSlang/pinang.dart';
+import 'package:translator_app/ui/listStateSlang/sabah.dart';
+import 'package:translator_app/ui/listStateSlang/sarawak.dart';
+import 'package:translator_app/ui/listStateSlang/terengganu.dart';
+import 'package:translator_app/ui/slangExpansionTile.dart';
 
 class SearchAll extends StatefulWidget {
   State<SearchAll> createState() => _SearchAllState();
@@ -105,7 +105,7 @@ class _SearchAllState extends State<SearchAll> {
                 var splittedList = items[index].split("+");
 
                 if (searchedValue.isNotEmpty) {
-                  return ExpansionTileWidget(
+                  return SlangExpansionTileWidget(
                     slangTitle: splittedList[0],
                     malayTitle: splittedList[1],
                     englishTitle: splittedList[2],

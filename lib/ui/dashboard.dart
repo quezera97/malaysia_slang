@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:translator_app/ui/searchAll.dart';
 import 'package:translator_app/ui/settings.dart';
 import 'package:translator_app/ui/translation.dart';
-import 'package:translator_app/ui/widget/selectCardSlang.dart';
+import 'package:translator_app/ui/slangSelectCard.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'aboutMalaysia/about.dart';
@@ -90,16 +90,16 @@ class Dashboard extends StatelessWidget {
         body: TabBarView(
           children: [
             GridView.count(
-            padding: EdgeInsets.all(10),
-            childAspectRatio: 1.3,
-            crossAxisCount: 2,
-            crossAxisSpacing: 5.0,
-            mainAxisSpacing: 5.0,
-            children: List.generate(slangChoices.length, (index) {
-              return Center(
-                child: SelectCardSlang(choice: slangChoices[index]),
-              );
-            })),
+                padding: EdgeInsets.all(10),
+                childAspectRatio: 1.3,
+                crossAxisCount: 2,
+                crossAxisSpacing: 5.0,
+                mainAxisSpacing: 5.0,
+                children: List.generate(slangChoices.length, (index) {
+                  return Center(
+                    child: SlangSelectCard(choice: slangChoices[index]),
+                  );
+                })),
 
             //about malaysia
             AboutMalaysia(),

@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,22 +9,23 @@ import 'package:translator_app/ui/widget/leadingIconText.dart';
 import 'package:translator_app/ui/widget/snackBar.dart';
 import 'package:share_plus/share_plus.dart';
 
-class ExpansionTileWidget extends StatefulWidget {
+class SlangExpansionTileWidget extends StatefulWidget {
   final String slangTitle;
   final String malayTitle;
   final String englishTitle;
 
-  ExpansionTileWidget({
+  SlangExpansionTileWidget({
     super.key,
     required this.slangTitle,
     required this.malayTitle,
     required this.englishTitle,
   });
 
-  _ExpansionTileWidgetState createState() => _ExpansionTileWidgetState();
+  _SlangExpansionTileWidgetState createState() =>
+      _SlangExpansionTileWidgetState();
 }
 
-class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
+class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
   final audioPlayer = AudioPlayer();
   late SharedPreferences _prefs;
   double _resizedFontSize = 16.0;

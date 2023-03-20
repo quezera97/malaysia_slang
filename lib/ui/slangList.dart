@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:translator_app/ui/addWord.dart';
-import 'package:translator_app/ui/widget/expansionTile.dart';
+import 'package:translator_app/ui/slangExpansionTile.dart';
 
 class SlangList extends StatefulWidget {
   final String selectedSlang;
@@ -60,37 +60,37 @@ class _SlangListState extends State<SlangList> {
           ),
         ),
         actions: <Widget>[
-            Row(
-              children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AddWord(slang: widget.selectedSlang)));
-                  },
+          Row(
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.add,
+                  color: Colors.white,
                 ),
-              ],
-            )
-          ],
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              AddWord(slang: widget.selectedSlang)));
+                },
+              ),
+            ],
+          )
+        ],
       ),
       body: ListView.builder(
-        shrinkWrap: true,
-        itemCount: widget.selectedSlangList.length,
-        itemBuilder: (context, index) {
-          var splittedList = widget.selectedSlangList[index].split("+");
+          shrinkWrap: true,
+          itemCount: widget.selectedSlangList.length,
+          itemBuilder: (context, index) {
+            var splittedList = widget.selectedSlangList[index].split("+");
 
-          return ExpansionTileWidget(
-            slangTitle: splittedList[0],
-            malayTitle: splittedList[1],
-            englishTitle: splittedList[2],
-          );
-        }
-      ),
+            return SlangExpansionTileWidget(
+              slangTitle: splittedList[0],
+              malayTitle: splittedList[1],
+              englishTitle: splittedList[2],
+            );
+          }),
     );
   }
 }

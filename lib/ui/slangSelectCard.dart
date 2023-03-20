@@ -4,19 +4,19 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:translator_app/enum/stateEnum.dart';
 import 'package:translator_app/ui/settings.dart';
 import 'package:translator_app/ui/slangList.dart';
-import 'package:translator_app/ui/stateSlang/klselangor.dart';
-import 'package:translator_app/ui/stateSlang/johor.dart';
-import 'package:translator_app/ui/stateSlang/kedah.dart';
-import 'package:translator_app/ui/stateSlang/kelantan.dart';
-import 'package:translator_app/ui/stateSlang/melaka.dart';
-import 'package:translator_app/ui/stateSlang/nismilan.dart';
-import 'package:translator_app/ui/stateSlang/pahang.dart';
-import 'package:translator_app/ui/stateSlang/perak.dart';
-import 'package:translator_app/ui/stateSlang/perlis.dart';
-import 'package:translator_app/ui/stateSlang/pinang.dart';
-import 'package:translator_app/ui/stateSlang/sabah.dart';
-import 'package:translator_app/ui/stateSlang/sarawak.dart';
-import 'package:translator_app/ui/stateSlang/terengganu.dart';
+import 'package:translator_app/ui/listStateSlang/klselangor.dart';
+import 'package:translator_app/ui/listStateSlang/johor.dart';
+import 'package:translator_app/ui/listStateSlang/kedah.dart';
+import 'package:translator_app/ui/listStateSlang/kelantan.dart';
+import 'package:translator_app/ui/listStateSlang/melaka.dart';
+import 'package:translator_app/ui/listStateSlang/nismilan.dart';
+import 'package:translator_app/ui/listStateSlang/pahang.dart';
+import 'package:translator_app/ui/listStateSlang/perak.dart';
+import 'package:translator_app/ui/listStateSlang/perlis.dart';
+import 'package:translator_app/ui/listStateSlang/pinang.dart';
+import 'package:translator_app/ui/listStateSlang/sabah.dart';
+import 'package:translator_app/ui/listStateSlang/sarawak.dart';
+import 'package:translator_app/ui/listStateSlang/terengganu.dart';
 
 class Choice {
   const Choice({required this.title, required this.image});
@@ -40,8 +40,8 @@ List<Choice> slangChoices = <Choice>[
   Choice(title: StateEnum.terengganu, image: 'assets/img/terengganu.png'),
 ];
 
-class SelectCardSlang extends StatelessWidget {
-  const SelectCardSlang({Key? key, required this.choice}) : super(key: key);
+class SlangSelectCard extends StatelessWidget {
+  const SlangSelectCard({Key? key, required this.choice}) : super(key: key);
   final Choice choice;
 
   Widget build(BuildContext context) {

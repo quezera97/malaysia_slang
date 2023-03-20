@@ -6,7 +6,6 @@ import 'longTextAboutMalaysia.dart';
 class AboutMalaysia extends StatelessWidget {
   const AboutMalaysia({super.key});
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor('#66347F'),
@@ -24,7 +23,7 @@ class AboutMalaysia extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Container(
-                child: LongTextAboutMalaysia(), 
+                child: LongTextAboutMalaysia(),
               ),
             ),
           ],
