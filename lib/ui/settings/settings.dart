@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/ui/settings/colorPicker.dart';
+import 'package:translator_app/ui/settings/joinTextAboutUs.dart';
+import 'package:translator_app/ui/settings/joinTextPolicy.dart';
 import 'package:translator_app/ui/widget/alertPopUp.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
@@ -57,29 +59,6 @@ class _SettingsState extends State<Settings> {
     } else {
       throw 'Could not launch $url';
     }
-  }
-
-  String joinedTextAboutUs(){
-    var lineOne = 'Our mission is to provide you with the best possible experience using our app.';
-    var lineTwo = 'We are committed to constantly improving and updating our app to meet your needs.';
-    var lineThree = 'If you have any questions or feedback, please don\'t hesitate to contact us at zaher@gmail.com.';
-    var lineFour = 'Thank you for using our app!';
-
-    var joinedText = lineOne + '\n\n' + lineTwo + '\n\n' + lineThree + '\n\n\n' + lineFour;
-
-    return joinedText;
-  }
-
-  String joinedTextPrivacyPolicy(){
-    var lineOne = 'We value your privacy and we have a simple policy:';
-    var lineTwo = 'We do not collect any personal information from our users.';
-    var lineThree = 'We do not require you to create an account, and we do not store any data on our servers.';
-    var lineFour = 'By using our app, you agree to the terms of this privacy policy.';
-    var lineFive = 'If you have any questions or concerns, please contact us at support@example.com';
-
-    var joinedText = lineOne + '\n\n\n' + lineTwo + '\n\n' + lineThree + '\n\n\n' + lineFour + '\n\n' + lineFive;
-
-    return joinedText;
   }
 
   String selectedAppBarHexCode = '#37306B';
