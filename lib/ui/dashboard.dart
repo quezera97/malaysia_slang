@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/ui/searchAll.dart';
 import 'package:translator_app/ui/settings.dart';
 import 'package:translator_app/ui/translation.dart';
@@ -7,8 +8,33 @@ import 'package:hexcolor/hexcolor.dart';
 
 import 'aboutMalaysia/about.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+  late SharedPreferences _prefs;
+
+  String selectedAppBarHexCode = '#37306B';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSelectedTheme();
+  }
+
+  Future<void> _loadSelectedTheme() async {
+    _prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+    });
+  }
+
   Widget build(BuildContext context) {
+    _loadSelectedTheme();
+    
     return DefaultTabController(
       length: 2,
       initialIndex: 0,
@@ -16,7 +42,7 @@ class Dashboard extends StatelessWidget {
         backgroundColor: HexColor('#66347F'),
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: HexColor('#37306B'),
+          backgroundColor: HexColor(selectedAppBarHexCode),
           centerTitle: false,
           title: RichText(
             text: TextSpan(

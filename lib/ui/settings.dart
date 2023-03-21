@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:translator_app/ui/settings/colorPicker.dart';
+import 'package:translator_app/ui/widget/alertPopUp.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -17,6 +19,7 @@ class _SettingsState extends State<Settings> {
 
   void initState() {
     super.initState();
+    _loadSelectedTheme();
     _loadSliderValue();
   }
 
@@ -56,18 +59,54 @@ class _SettingsState extends State<Settings> {
     }
   }
 
+  String joinedTextAboutUs(){
+    var lineOne = 'Our mission is to provide you with the best possible experience using our app.';
+    var lineTwo = 'We are committed to constantly improving and updating our app to meet your needs.';
+    var lineThree = 'If you have any questions or feedback, please don\'t hesitate to contact us at zaher@gmail.com.';
+    var lineFour = 'Thank you for using our app!';
+
+    var joinedText = lineOne + '\n\n' + lineTwo + '\n\n' + lineThree + '\n\n\n' + lineFour;
+
+    return joinedText;
+  }
+
+  String joinedTextPrivacyPolicy(){
+    var lineOne = 'We value your privacy and we have a simple policy:';
+    var lineTwo = 'We do not collect any personal information from our users.';
+    var lineThree = 'We do not require you to create an account, and we do not store any data on our servers.';
+    var lineFour = 'By using our app, you agree to the terms of this privacy policy.';
+    var lineFive = 'If you have any questions or concerns, please contact us at support@example.com';
+
+    var joinedText = lineOne + '\n\n\n' + lineTwo + '\n\n' + lineThree + '\n\n\n' + lineFour + '\n\n' + lineFive;
+
+    return joinedText;
+  }
+
+  String selectedAppBarHexCode = '#37306B';
+
+  Future<void> _loadSelectedTheme() async {
+    _prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+    });
+  }
+
   Widget build(BuildContext context) {
+
+    _loadSelectedTheme();
+
     return Scaffold(
         backgroundColor: HexColor('#EDE9D5'),
         appBar: AppBar(
           leading: BackButton(
-            color: Colors.black,
+          color: Colors.white,
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           elevation: 0.0,
-          backgroundColor: HexColor('#37306B'),
+          backgroundColor: HexColor(selectedAppBarHexCode),
           centerTitle: true,
           title: RichText(
             text: TextSpan(
@@ -94,7 +133,7 @@ class _SettingsState extends State<Settings> {
                       title: Text(
                         'Resize text',
                         style: TextStyle(fontSize: _fontSize),
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.left,
                       ),
                       subtitle: Slider(
                         value: _fontSize,
@@ -105,6 +144,23 @@ class _SettingsState extends State<Settings> {
                         },
                       ),
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                    child: ListTile(
+                      title: Text(
+                        'Customize Theme',
+                        style: TextStyle(fontSize: _fontSize),
+                        textAlign: TextAlign.left,
+                      ),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute( builder: (context) => ColorPickerScreen()));
+                      }
+                    ),
+                  ),
+                  Divider(
+                    thickness: 0.5,
+                    color: Colors.grey
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
@@ -128,17 +184,52 @@ class _SettingsState extends State<Settings> {
                       onTap: _shareApp,
                     ),
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                  //   child: ListTile(
-                  //     title: Text(
-                  //       'Add New',
-                  //       style: TextStyle(fontSize: _fontSize),
-                  //       textAlign: TextAlign.left,
-                  //     ),
-                  //     onTap: _shareApp,
-                  //   ),
-                  // ),
+                  Divider(
+                    thickness: 0.5,
+                    color: Colors.grey
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                    child: ListTile(
+                      title: Text(
+                        'About Us',
+                        style: TextStyle(fontSize: _fontSize),
+                        textAlign: TextAlign.left,
+                      ),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertPopUp(
+                              titleAlert: 'QueZ Apps', 
+                              contentAlert: joinedTextAboutUs(),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                    child: ListTile(
+                      title: Text(
+                        'Privacy Policy',
+                        style: TextStyle(fontSize: _fontSize),
+                        textAlign: TextAlign.left,
+                      ),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertPopUp(
+                              titleAlert: 'Privacy Policy', 
+                              contentAlert: joinedTextPrivacyPolicy(),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),

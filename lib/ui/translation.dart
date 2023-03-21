@@ -41,6 +41,7 @@ class _TranslationPageState extends State<TranslationPage> {
 
   void initState() {
     super.initState();
+    _loadSelectedTheme();
     _loadSliderValue();
     initConnectivity();
 
@@ -84,20 +85,32 @@ class _TranslationPageState extends State<TranslationPage> {
     });
   }
 
+  String selectedAppBarHexCode = '#37306B';
+
+  Future<void> _loadSelectedTheme() async {
+    _prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+    });
+  }
+
   Widget build(BuildContext context) {
     var connResult = _connectionStatus.toString().split(".");
 
+    _loadSelectedTheme();
+    
     return Scaffold(
       backgroundColor: HexColor('#EDE9D5'),
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.black,
+          color: Colors.white,
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         elevation: 0.0,
-        backgroundColor: HexColor('#37306B'),
+        backgroundColor: HexColor(selectedAppBarHexCode),
         centerTitle: true,
         title: RichText(
           text: TextSpan(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/ui/listStateSlang/johor.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:translator_app/ui/listStateSlang/kedah.dart';
@@ -20,6 +21,24 @@ class SearchAll extends StatefulWidget {
 }
 
 class _SearchAllState extends State<SearchAll> {
+  late SharedPreferences _prefs;
+
+  String selectedAppBarHexCode = '#37306B';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSelectedTheme();
+  }
+
+  Future<void> _loadSelectedTheme() async {
+    _prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+    });
+  }
+
   String searchedValue = '';
 
   var items = [
@@ -39,17 +58,20 @@ class _SearchAllState extends State<SearchAll> {
   ];
 
   Widget build(BuildContext context) {
+
+    _loadSelectedTheme();
+
     return Scaffold(
       backgroundColor: HexColor('#EDE9D5'),
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.black,
+          color: Colors.white,
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         elevation: 0.0,
-        backgroundColor: HexColor('#37306B'),
+        backgroundColor: HexColor(selectedAppBarHexCode),
         centerTitle: true,
         title: RichText(
           text: TextSpan(

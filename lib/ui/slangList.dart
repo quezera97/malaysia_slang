@@ -18,12 +18,32 @@ class SlangList extends StatefulWidget {
 }
 
 class _SlangListState extends State<SlangList> {
+  late SharedPreferences _prefs;
+
+  String selectedAppBarHexCode = '#37306B';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSelectedTheme();
+  }
+
+  Future<void> _loadSelectedTheme() async {
+    _prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+    });
+  }
+
   Widget build(BuildContext context) {
+    _loadSelectedTheme();
+
     return Scaffold(
       backgroundColor: HexColor('#EDE9D5'),
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.black,
+          color: Colors.white,
           onPressed: () async {
             SharedPreferences prefs = await SharedPreferences.getInstance();
             await prefs.remove('prefsNegeri');
@@ -33,7 +53,7 @@ class _SlangListState extends State<SlangList> {
           },
         ),
         elevation: 0.0,
-        backgroundColor: HexColor('#37306B'),
+        backgroundColor: HexColor(selectedAppBarHexCode),
         centerTitle: false,
         title: RichText(
           text: TextSpan(
