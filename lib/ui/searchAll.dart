@@ -25,7 +25,6 @@ class _SearchAllState extends State<SearchAll> {
 
   String selectedAppBarHexCode = '#37306B';
 
-  @override
   void initState() {
     super.initState();
     _loadSelectedTheme();
@@ -58,7 +57,6 @@ class _SearchAllState extends State<SearchAll> {
   ];
 
   Widget build(BuildContext context) {
-
     _loadSelectedTheme();
 
     return Scaffold(

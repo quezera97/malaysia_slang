@@ -37,9 +37,9 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
 
   Future<void> _loadSliderFontSize() async {
     _prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _resizedFontSize = _prefs.getDouble('prefsResizeText') ?? 16.0;
-    });
+    // setState(() {
+    _resizedFontSize = _prefs.getDouble('prefsResizeText') ?? 16.0;
+    // });
   }
 
   Widget build(BuildContext context) {

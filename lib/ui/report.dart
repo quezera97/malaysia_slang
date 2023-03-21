@@ -17,7 +17,6 @@ class _ReportState extends State<Report> {
 
   String selectedAppBarHexCode = '#37306B';
 
-  @override
   void initState() {
     super.initState();
     _loadSelectedTheme();
@@ -35,8 +34,8 @@ class _ReportState extends State<Report> {
     final reportDetailsController = TextEditingController();
     final reportWordController = TextEditingController(text: widget.word);
 
-  _loadSelectedTheme();
-  
+    _loadSelectedTheme();
+
     return Scaffold(
       backgroundColor: HexColor('#EDE9D5'),
       appBar: AppBar(

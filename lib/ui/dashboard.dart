@@ -9,7 +9,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'aboutMalaysia/about.dart';
 
 class Dashboard extends StatefulWidget {
-  @override
   State<Dashboard> createState() => _DashboardState();
 }
 
@@ -18,7 +17,6 @@ class _DashboardState extends State<Dashboard> {
 
   String selectedAppBarHexCode = '#37306B';
 
-  @override
   void initState() {
     super.initState();
     _loadSelectedTheme();
@@ -34,7 +32,7 @@ class _DashboardState extends State<Dashboard> {
 
   Widget build(BuildContext context) {
     _loadSelectedTheme();
-    
+
     return DefaultTabController(
       length: 2,
       initialIndex: 0,

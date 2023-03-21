@@ -17,7 +17,6 @@ class _AddWordState extends State<AddWord> {
 
   String selectedAppBarHexCode = '#37306B';
 
-  @override
   void initState() {
     super.initState();
     _loadSelectedTheme();
@@ -37,7 +36,7 @@ class _AddWordState extends State<AddWord> {
     final addMalayController = TextEditingController();
     final addEnglishController = TextEditingController();
 
-  _loadSelectedTheme();
+    _loadSelectedTheme();
 
     return Scaffold(
       backgroundColor: HexColor('#EDE9D5'),
@@ -105,7 +104,7 @@ class _AddWordState extends State<AddWord> {
                           ),
                         ),
                       ),
-                    ),                    
+                    ),
                     TextFormField(
                       readOnly: true,
                       controller: stateController,
@@ -232,13 +231,13 @@ class _AddWordState extends State<AddWord> {
                             var slang = addSlangController.text;
                             var malay = addMalayController.text;
                             var english = addEnglishController.text;
-                            
-                            String textEmailBody = '$word \n Slang: $slang \n\n Malay: $malay \n\n English: $english';
 
-                            if (addSlangController.text.isNotEmpty && 
-                                addMalayController.text.isNotEmpty && 
+                            String textEmailBody =
+                                '$word \n Slang: $slang \n\n Malay: $malay \n\n English: $english';
+
+                            if (addSlangController.text.isNotEmpty &&
+                                addMalayController.text.isNotEmpty &&
                                 addEnglishController.text.isNotEmpty) {
-
                               var emailresponse = await send(
                                 reportSubject: stateController.text,
                                 reportBody: textEmailBody,
@@ -264,8 +263,8 @@ class _AddWordState extends State<AddWord> {
                             // minimumSize: MaterialStateProperty.all(
                             //     const Size(332, 50)),
                           ),
-                          child: const Text('Add',
-                              style: TextStyle(fontSize: 15)),
+                          child:
+                              const Text('Add', style: TextStyle(fontSize: 15)),
                         )),
                   ],
                 ),
