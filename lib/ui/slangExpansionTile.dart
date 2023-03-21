@@ -32,10 +32,10 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
 
   void initState() {
     super.initState();
-    _loadSliderValue();
+    _loadSliderFontSize();
   }
 
-  Future<void> _loadSliderValue() async {
+  Future<void> _loadSliderFontSize() async {
     _prefs = await SharedPreferences.getInstance();
     setState(() {
       _resizedFontSize = _prefs.getDouble('prefsResizeText') ?? 16.0;

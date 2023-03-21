@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:translator_app/enum/stateEnum.dart';
-import 'package:translator_app/ui/settings.dart';
+import 'package:translator_app/ui/settings/settings.dart';
 import 'package:translator_app/ui/slangList.dart';
 import 'package:translator_app/ui/listStateSlang/klselangor.dart';
 import 'package:translator_app/ui/listStateSlang/johor.dart';

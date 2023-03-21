@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator_app/ui/searchAll.dart';
-import 'package:translator_app/ui/settings.dart';
+import 'package:translator_app/ui/settings/settings.dart';
 import 'package:translator_app/ui/translation.dart';
 import 'package:translator_app/ui/slangSelectCard.dart';
 import 'package:hexcolor/hexcolor.dart';

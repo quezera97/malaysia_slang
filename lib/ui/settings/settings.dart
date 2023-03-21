@@ -20,17 +20,17 @@ class _SettingsState extends State<Settings> {
   void initState() {
     super.initState();
     _loadSelectedTheme();
-    _loadSliderValue();
+    _loadSliderFontSize();
   }
 
-  Future<void> _loadSliderValue() async {
+  Future<void> _loadSliderFontSize() async {
     _prefs = await SharedPreferences.getInstance();
     setState(() {
       _fontSize = _prefs.getDouble('prefsResizeText') ?? 16.0;
     });
   }
 
-  Future<void> _saveSliderValue(double value) async {
+  Future<void> _saveSliderFontSize(double value) async {
     await _prefs.setDouble('prefsResizeText', value);
     setState(() {
       _fontSize = value;
@@ -140,7 +140,7 @@ class _SettingsState extends State<Settings> {
                         min: 10.0,
                         max: 30.0,
                         onChanged: (double value) {
-                          _saveSliderValue(value);
+                          _saveSliderFontSize(value);
                         },
                       ),
                     ),
@@ -227,6 +227,22 @@ class _SettingsState extends State<Settings> {
                             );
                           },
                         );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                    child: ListTile(
+                      title: Text(
+                        'Reset Settings',
+                        style: TextStyle(fontSize: _fontSize),
+                        textAlign: TextAlign.left,
+                      ),
+                      onTap: () {
+                        _prefs.remove('prefsResizeText');
+                        _prefs.remove('prefsAppBarColor');
+                        _loadSelectedTheme();
+                        _loadSliderFontSize();
                       },
                     ),
                   ),

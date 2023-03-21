@@ -42,7 +42,7 @@ class _TranslationPageState extends State<TranslationPage> {
   void initState() {
     super.initState();
     _loadSelectedTheme();
-    _loadSliderValue();
+    _loadSliderFontSize();
     initConnectivity();
 
     _connectivitySubscription =
@@ -54,7 +54,7 @@ class _TranslationPageState extends State<TranslationPage> {
     super.dispose();
   }
 
-  Future<void> _loadSliderValue() async {
+  Future<void> _loadSliderFontSize() async {
     _prefs = await SharedPreferences.getInstance();
     setState(() {
       _resizedFontSize = _prefs.getDouble('prefsResizeText') ?? 16.0;
