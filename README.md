@@ -20,3 +20,7 @@ A Flutter app where User can learn and search Malaysian Slang
 - share_plus: ^6.3.1
 - url_launcher: ^6.1.10
 
+## App Preview
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/readme-assets/dashboard.jpg">
+</picture>
