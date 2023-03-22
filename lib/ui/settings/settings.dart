@@ -105,125 +105,153 @@ class _SettingsState extends State<Settings> {
             Container(
               child: ListView(
                 children: [
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: ListTile(
-                      title: Text(
-                        'Resize text',
-                        style: TextStyle(fontSize: _fontSize),
-                        textAlign: TextAlign.left,
-                      ),
-                      subtitle: Slider(
-                        value: _fontSize,
-                        min: 10.0,
-                        max: 30.0,
-                        onChanged: (double value) {
-                          _saveSliderFontSize(value);
-                        },
-                      ),
+
+                  Card(
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                            title: Text(
+                              'Customize Theme',
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute( builder: (context) => ColorPickerScreen()));
+                            }
+                          ),
+                        ),
+                        Divider(
+                          thickness: 0.5,
+                          color: Colors.grey,
+                        ), 
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: ListTile(
+                            title: Text(
+                              'Resize text',
+                              style: TextStyle(fontSize: _fontSize),
+                              textAlign: TextAlign.center,
+                            ),
+                            subtitle: Slider(
+                              value: _fontSize,
+                              min: 10.0,
+                              max: 30.0,
+                              onChanged: (double value) {
+                                _saveSliderFontSize(value);
+                              },
+                            ),
+                          ),
+                        ),
+                        Divider(
+                          thickness: 0.5,
+                          color: Colors.grey,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                            title: Text(
+                              'Reset Settings',
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: () {
+                              _prefs.remove('prefsResizeText');
+                              _prefs.remove('prefsAppBarColor');
+                              _loadSelectedTheme();
+                              _loadSliderFontSize();
+                            },
+                          ),
+                        ),
+                      ]
+                    )
+                  ),
+
+                  Card(
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                            title: Text(
+                              'Send Feedback',
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: _feedbackApp,
+                          ),
+                        ),
+                        Divider(
+                          thickness: 0.5,
+                          color: Colors.grey,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                            title: Text(
+                              'Share & Recommend',
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: _shareApp,
+                          ),
+                        ),                
+                      ]
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                    child: ListTile(
-                      title: Text(
-                        'Customize Theme',
-                        style: TextStyle(fontSize: _fontSize),
-                        textAlign: TextAlign.left,
-                      ),
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute( builder: (context) => ColorPickerScreen()));
-                      }
-                    ),
-                  ),
-                  Divider(
-                    thickness: 0.5,
-                    color: Colors.grey
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                    child: ListTile(
-                      title: Text(
-                        'Send Feedback',
-                        style: TextStyle(fontSize: _fontSize),
-                        textAlign: TextAlign.left,
-                      ),
-                      onTap: _feedbackApp,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                    child: ListTile(
-                      title: Text(
-                        'Share & Recommend',
-                        style: TextStyle(fontSize: _fontSize),
-                        textAlign: TextAlign.left,
-                      ),
-                      onTap: _shareApp,
-                    ),
-                  ),
-                  Divider(
-                    thickness: 0.5,
-                    color: Colors.grey
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                    child: ListTile(
-                      title: Text(
-                        'About Us',
-                        style: TextStyle(fontSize: _fontSize),
-                        textAlign: TextAlign.left,
-                      ),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertPopUp(
-                              titleAlert: 'QueZ Apps', 
-                              contentAlert: joinedTextAboutUs(),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                    child: ListTile(
-                      title: Text(
-                        'Privacy Policy',
-                        style: TextStyle(fontSize: _fontSize),
-                        textAlign: TextAlign.left,
-                      ),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertPopUp(
-                              titleAlert: 'Privacy Policy', 
-                              contentAlert: joinedTextPrivacyPolicy(),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                    child: ListTile(
-                      title: Text(
-                        'Reset Settings',
-                        style: TextStyle(fontSize: _fontSize),
-                        textAlign: TextAlign.left,
-                      ),
-                      onTap: () {
-                        _prefs.remove('prefsResizeText');
-                        _prefs.remove('prefsAppBarColor');
-                        _loadSelectedTheme();
-                        _loadSliderFontSize();
-                      },
-                    ),
+                  
+                  Card(
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                            title: Text(
+                              'About Us',
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertPopUp(
+                                    titleAlert: 'QueZ Apps', 
+                                    contentAlert: joinedTextAboutUs(),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                        Divider(
+                          thickness: 0.5,
+                          color: Colors.grey,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                            title: Text(
+                              'Privacy Policy',
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertPopUp(
+                                    titleAlert: 'Privacy Policy', 
+                                    contentAlert: joinedTextPrivacyPolicy(),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),                        
+                      ]
+                    )
                   ),
                 ],
               ),
@@ -239,7 +267,7 @@ class _SettingsState extends State<Settings> {
                     'Build Version: 1.0.0',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: Color.fromARGB(255, 70, 70, 70),
                     ),
                   ),
                 ),

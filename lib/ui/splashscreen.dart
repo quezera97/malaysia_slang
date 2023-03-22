@@ -10,17 +10,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class StartState extends State<SplashScreen> {
-  late SharedPreferences _prefs;
 
-  String selectedAppBarHexCode = '#37306B';
+  ImageProvider preloadImage = AssetImage('assets/img/malaysia_flag_1.png');
 
   void initState() {
     super.initState();
-    _loadSelectedTheme();
-    startTime();
+    _startTime();
   }
 
-  startTime() async {
+  _startTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('prefsNegeri');
     await prefs.remove('prefsListNegeri');
@@ -34,26 +32,14 @@ class StartState extends State<SplashScreen> {
         context, MaterialPageRoute(builder: (context) => Dashboard()));
   }
 
-  
-  Future<void> _loadSelectedTheme() async {
-    _prefs = await SharedPreferences.getInstance();
-
-    setState(() {
-      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
-    });
-  }
-
   Widget build(BuildContext context) {
-    return initWidget(context);
-  }
 
-  Widget initWidget(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
-              color: HexColor(selectedAppBarHexCode),
+              color: HexColor('#37306B'),
             ),
           ),
           Center(
@@ -61,30 +47,10 @@ class StartState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset('assets/img/malaysia_flag_1.png'),
-                RichText(
-                  text: TextSpan(
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'Slang',
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.white,
-                              fontFamily: 'PoppinsBold')),
-                      TextSpan(
-                          text: ' - Malay - ',
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.yellow,
-                              fontFamily: 'PoppinsBold')),
-                      TextSpan(
-                          text: 'English',
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.white,
-                              fontFamily: 'PoppinsBold')),
-                    ],
-                  ),
+                Image(
+                  image: preloadImage,
+                  // width: 100,
+                  // height: 100,
                 ),
               ],
             ),
