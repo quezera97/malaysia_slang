@@ -21,6 +21,9 @@ A Flutter app where User can learn and search Malaysian Slang
 - url_launcher: ^6.1.10
 
 ## App Preview
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/readme-assets/dashboard.jpg">
-</picture>
+<div>
+  <img src="/readme-assets/dashboard.jpg" height="450" style="display: inline-block;"/>
+  <img src="/readme-assets/list.jpg" height="450" style="display: inline-block;"/>
+  <img src="/readme-assets/settings.jpg" height="450" style="display: inline-block;"/>
+  <img src="/readme-assets/translate.jpg" height="450" style="display: inline-block;"/>
+</div>
