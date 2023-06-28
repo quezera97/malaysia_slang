@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'iGuaman Mobile',
+      title: 'Malaysia Slang',
       theme: ThemeData(primarySwatch: Colors.blue),
       // home: HomePage(),
       routes: {

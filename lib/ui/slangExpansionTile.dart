@@ -56,23 +56,23 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
               itemBuilder: (context) {
                 return [
                   PopupMenuItem(
-                    child: LeadIconText(icon: Icons.copy, text: 'Copy'),
+                    child: LeadIconText(icon: Icons.copy, text: 'Salin'),
                     onTap: () async {
                       await Clipboard.setData(
                           ClipboardData(text: widget.slangTitle));
                       SnackBarWidget.succesSnackbar(context,
-                          snackBarContent: 'Copied to clipboard!',
-                          labelContent: 'Close');
+                          snackBarContent: 'Disalin ke papan klip!',
+                          labelContent: 'Tutup');
                     },
                   ),
                   PopupMenuItem(
-                    child: LeadIconText(icon: Icons.share, text: 'Share'),
+                    child: LeadIconText(icon: Icons.share, text: 'Kongsi'),
                     onTap: () async {
                       Share.share(widget.slangTitle);
                     },
                   ),
                   PopupMenuItem(
-                    child: LeadIconText(icon: Icons.report, text: 'Report'),
+                    child: LeadIconText(icon: Icons.report, text: 'Lapor'),
                     onTap: () => Future(
                       () => Navigator.of(context).push(
                         MaterialPageRoute(
