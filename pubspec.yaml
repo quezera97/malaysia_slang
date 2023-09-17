@@ -1,5 +1,5 @@
 name: translator_app
-description: A new Flutter project.
+description: An app that provide Malaysia Slang translated to English
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -35,6 +35,25 @@ dependencies:
   flutter_translate: ^4.0.3
   flutter_localization: ^0.1.10
   url_launcher: ^6.1.10
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/img/launcher_icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  # web:
+  #   generate: true
+  #   image_path: "path/to/image.png"
+  #   background_color: "#hexcode"
+  #   theme_color: "#hexcode"
+  # windows:
+  #   generate: true
+  #   image_path: "path/to/image.png"
+  #   icon_size: 48
+  # macos:
+  #   generate: true
+  #   image_path: "path/to/image.png"
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +72,8 @@ flutter:
   assets:
     - assets/img/
     - assets/img/malaysia_flag_1.png
+    - assets/img/malaysia_flag_1.png
+    - assets/img/launcher_icon.png
     
     - assets/sound/
     - assets/sound/

@@ -14,8 +14,8 @@
     
     <application
         android:name="${applicationName}"
-        android:label="translator_app"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Malaysia Slang"
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
