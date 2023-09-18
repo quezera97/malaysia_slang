@@ -8,7 +8,7 @@ Future<String> send({
   final Email email = Email(
     subject: reportSubject,
     body: reportBody,
-    recipients: ['zahir@mitsb.my'],
+    recipients: ['help.quezera@gmail.com'],
     isHTML: false,
   );
 
