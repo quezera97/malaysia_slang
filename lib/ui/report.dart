@@ -15,10 +15,14 @@ class Report extends StatefulWidget {
 class _ReportState extends State<Report> {
   late SharedPreferences _prefs;
 
+  final reportDetailsController = TextEditingController();
+  final reportWordController = TextEditingController();
+
   String selectedAppBarHexCode = '#37306B';
 
   void initState() {
     super.initState();
+    reportWordController.text = widget.word;
     _loadSelectedTheme();
   }
 
@@ -30,9 +34,7 @@ class _ReportState extends State<Report> {
     });
   }
 
-  Widget build(BuildContext context) {
-    final reportDetailsController = TextEditingController();
-    final reportWordController = TextEditingController(text: widget.word);
+  Widget build(BuildContext context) {    
 
     _loadSelectedTheme();
 

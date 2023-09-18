@@ -13,12 +13,20 @@ class AddWord extends StatefulWidget {
 }
 
 class _AddWordState extends State<AddWord> {
+  final _formKey = GlobalKey<FormState>();
+
+  final stateController = TextEditingController();
+  final addSlangController = TextEditingController();
+  final addMalayController = TextEditingController();
+  final addEnglishController = TextEditingController();
+
   late SharedPreferences _prefs;
 
   String selectedAppBarHexCode = '#37306B';
 
   void initState() {
     super.initState();
+    stateController.text = widget.slang;
     _loadSelectedTheme();
   }
 
@@ -30,12 +38,7 @@ class _AddWordState extends State<AddWord> {
     });
   }
 
-  Widget build(BuildContext context) {
-    final stateController = TextEditingController(text: widget.slang);
-    final addSlangController = TextEditingController();
-    final addMalayController = TextEditingController();
-    final addEnglishController = TextEditingController();
-
+  Widget build(BuildContext context) {    
     _loadSelectedTheme();
 
     return Scaffold(
@@ -76,6 +79,7 @@ class _AddWordState extends State<AddWord> {
         ),
       ),
       body: Form(
+        key: _formKey,
         child: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(25.0),
