@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:translator_app/ui/addWord.dart';
-import 'package:translator_app/ui/slangExpansionTile.dart';
+import 'package:malaysia_slang/ui/addWord.dart';
+import 'package:malaysia_slang/ui/slangExpansionTile.dart';
 
 class SlangList extends StatefulWidget {
   final String selectedSlang;

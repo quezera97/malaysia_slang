@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator_app/ui/settings/colorPicker.dart';
-import 'package:translator_app/ui/settings/joinTextAboutUs.dart';
-import 'package:translator_app/ui/settings/joinTextPolicy.dart';
-import 'package:translator_app/ui/widget/alertPopUp.dart';
+import 'package:malaysia_slang/ui/settings/colorPicker.dart';
+import 'package:malaysia_slang/ui/settings/joinTextAboutUs.dart';
+import 'package:malaysia_slang/ui/settings/joinTextPolicy.dart';
+import 'package:malaysia_slang/ui/widget/alertPopUp.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:io';
@@ -18,7 +18,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   late SharedPreferences _prefs;
   double _fontSize = 16.0;
-  final String packageName = 'test';
+  final String packageName = 'com.malaysia_slang';
 
   void initState() {
     super.initState();
@@ -118,68 +118,71 @@ class _SettingsState extends State<Settings> {
             Container(
               child: ListView(
                 children: [
-                  Card(
-                      child: Column(children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: ListTile(
+                Column(
+                    children: <Widget>[
+                      //customize theme
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: ListTile(
                           title: Text(
                             'Customize Theme',
                             style: TextStyle(fontSize: 16.0),
                             textAlign: TextAlign.left,
                           ),
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ColorPickerScreen()));
-                          }),
-                    ),
-                    Divider(
-                      thickness: 0.5,
-                      color: Colors.grey,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: ListTile(
-                        title: Text(
-                          'Resize text',
-                          style: TextStyle(fontSize: _fontSize),
-                          textAlign: TextAlign.center,
+                            Navigator.push(context, MaterialPageRoute( builder: (context) => ColorPickerScreen()));
+                          }
                         ),
-                        subtitle: Slider(
-                          value: _fontSize,
-                          min: 10.0,
-                          max: 30.0,
-                          onChanged: (double value) {
-                            _saveSliderFontSize(value);
+                      ),
+                      Divider(
+                        thickness: 0.5,
+                        color: Color.fromARGB(255, 209, 209, 209),
+                      ), 
+                      //resize text
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: ListTile(
+                          title: Text(
+                            'Resize text',
+                            style: TextStyle(fontSize: _fontSize),
+                            textAlign: TextAlign.center,
+                          ),
+                          subtitle: Slider(
+                            value: _fontSize,
+                            min: 10.0,
+                            max: 30.0,
+                            onChanged: (double value) {
+                              _saveSliderFontSize(value);
+                            },
+                          ),
+                        ),
+                      ),
+                      Divider(
+                        thickness: 0.5,
+                        color: Color.fromARGB(255, 209, 209, 209),
+                      ),
+                      //reset settings
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: ListTile(
+                          title: Text(
+                            'Reset Settings',
+                            style: TextStyle(fontSize: 16.0),
+                            textAlign: TextAlign.left,
+                          ),
+                          onTap: () {
+                            _prefs.remove('prefsResizeText');
+                            _prefs.remove('prefsAppBarColor');
+                            _loadSelectedTheme();
+                            _loadSliderFontSize();
                           },
                         ),
                       ),
-                    ),
-                    Divider(
-                      thickness: 0.5,
-                      color: Colors.grey,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: ListTile(
-                        title: Text(
-                          'Reset Settings',
-                          style: TextStyle(fontSize: 16.0),
-                          textAlign: TextAlign.left,
+                      Divider(
+                          thickness: 0.5,
+                          color: Color.fromARGB(255, 209, 209, 209),
                         ),
-                        onTap: () {
-                          _prefs.remove('prefsResizeText');
-                          _prefs.remove('prefsAppBarColor');
-                          _loadSelectedTheme();
-                          _loadSliderFontSize();
-                        },
-                      ),
-                    ),
-                  ])),
-                  Card(
-                    child: Column(children: <Widget>[
+                      //send feedback
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: ListTile(
@@ -193,8 +196,9 @@ class _SettingsState extends State<Settings> {
                       ),
                       Divider(
                         thickness: 0.5,
-                        color: Colors.grey,
+                        color: Color.fromARGB(255, 209, 209, 209),
                       ),
+                      //share & recommend
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: ListTile(
@@ -206,57 +210,60 @@ class _SettingsState extends State<Settings> {
                           onTap: _shareApp,
                         ),
                       ),
-                    ]),
+                      Divider(
+                        thickness: 0.5,
+                        color: Color.fromARGB(255, 209, 209, 209),
+                      ),
+                      //about us
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: ListTile(
+                          title: Text(
+                            'About Us',
+                            style: TextStyle(fontSize: 16.0),
+                            textAlign: TextAlign.left,
+                          ),
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertPopUp(
+                                  titleAlert: 'QueZ Apps', 
+                                  contentAlert: joinedTextAboutUs(),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      Divider(
+                        thickness: 0.5,
+                        color: Color.fromARGB(255, 209, 209, 209),
+                      ),
+                      //privacy policy
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: ListTile(
+                          title: Text(
+                            'Privacy Policy',
+                            style: TextStyle(fontSize: 16.0),
+                            textAlign: TextAlign.left,
+                          ),
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertPopUp(
+                                  titleAlert: 'Privacy Policy', 
+                                  contentAlert: joinedTextPrivacyPolicy(),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ]
                   ),
-                  Card(
-                      child: Column(children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: ListTile(
-                        title: Text(
-                          'About Us',
-                          style: TextStyle(fontSize: 16.0),
-                          textAlign: TextAlign.left,
-                        ),
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertPopUp(
-                                titleAlert: 'QueZ Apps',
-                                contentAlert: joinedTextAboutUs(),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                    Divider(
-                      thickness: 0.5,
-                      color: Colors.grey,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: ListTile(
-                        title: Text(
-                          'Privacy Policy',
-                          style: TextStyle(fontSize: 16.0),
-                          textAlign: TextAlign.left,
-                        ),
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertPopUp(
-                                titleAlert: 'Privacy Policy',
-                                contentAlert: joinedTextPrivacyPolicy(),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ])),
                 ],
               ),
             ),

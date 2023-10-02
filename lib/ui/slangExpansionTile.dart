@@ -4,9 +4,9 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator_app/ui/report.dart';
-import 'package:translator_app/ui/widget/leadingIconText.dart';
-import 'package:translator_app/ui/widget/snackBar.dart';
+import 'package:malaysia_slang/ui/report.dart';
+import 'package:malaysia_slang/ui/widget/leadingIconText.dart';
+import 'package:malaysia_slang/ui/widget/snackBar.dart';
 import 'package:share_plus/share_plus.dart';
 
 class SlangExpansionTileWidget extends StatefulWidget {

@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator/translator.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:translator_app/ui/widget/snackBar.dart';
+import 'package:malaysia_slang/ui/widget/snackBar.dart';
 
 class TranslationPage extends StatefulWidget {
   _TranslationPageState createState() => _TranslationPageState();

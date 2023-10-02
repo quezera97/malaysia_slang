@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator_app/ui/dashboard.dart';
+import 'package:malaysia_slang/ui/dashboard.dart';
 
 class SplashScreen extends StatefulWidget {
   State<StatefulWidget> createState() => StartState();
