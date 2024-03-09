@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator_app/contsant/appBarTitle.dart';
-import 'package:translator_app/ui/searchAll.dart';
-import 'package:translator_app/ui/settings/settings.dart';
-import 'package:translator_app/ui/translation.dart';
-import 'package:translator_app/ui/slangSelectCard.dart';
+import 'package:malaysia_slang/ui/searchAll.dart';
+import 'package:malaysia_slang/ui/settings/settings.dart';
+import 'package:malaysia_slang/ui/translation.dart';
+import 'package:malaysia_slang/ui/slangSelectCard.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../contsant/appBarTitle.dart';
 import 'aboutMalaysia/about.dart';
 
 class Dashboard extends StatefulWidget {

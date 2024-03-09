@@ -1,4 +1,4 @@
-name: translator_app
+name: malaysia_slang
 description: An app that provide Malaysia Slang translated to English
 
 # The following line prevents the package from being accidentally published to
@@ -15,7 +15,9 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.0+3
+# version: 1.0.1+4
+# version: 1.0.2+5
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -71,11 +73,7 @@ flutter:
   assets:
     - assets/img/
     - assets/img/malaysia_flag_1.png
-    - assets/img/malaysia_flag_1.png
     - assets/img/launcher_icon.png
-    
-    - assets/sound/
-    - assets/sound/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:translator_app/ui/splashscreen.dart';
+import 'package:malaysia_slang/ui/splashscreen.dart';
 
 void main() => runApp(MyApp());
 

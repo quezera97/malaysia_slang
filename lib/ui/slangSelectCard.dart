@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:translator_app/enum/stateEnum.dart';
-import 'package:translator_app/ui/settings/settings.dart';
-import 'package:translator_app/ui/slangList.dart';
-import 'package:translator_app/ui/listStateSlang/klselangor.dart';
-import 'package:translator_app/ui/listStateSlang/johor.dart';
-import 'package:translator_app/ui/listStateSlang/kedah.dart';
-import 'package:translator_app/ui/listStateSlang/kelantan.dart';
-import 'package:translator_app/ui/listStateSlang/melaka.dart';
-import 'package:translator_app/ui/listStateSlang/nismilan.dart';
-import 'package:translator_app/ui/listStateSlang/pahang.dart';
-import 'package:translator_app/ui/listStateSlang/perak.dart';
-import 'package:translator_app/ui/listStateSlang/perlis.dart';
-import 'package:translator_app/ui/listStateSlang/pinang.dart';
-import 'package:translator_app/ui/listStateSlang/sabah.dart';
-import 'package:translator_app/ui/listStateSlang/sarawak.dart';
-import 'package:translator_app/ui/listStateSlang/terengganu.dart';
+import 'package:malaysia_slang/enum/stateEnum.dart';
+import 'package:malaysia_slang/ui/settings/settings.dart';
+import 'package:malaysia_slang/ui/slangList.dart';
+import 'package:malaysia_slang/ui/listStateSlang/klselangor.dart';
+import 'package:malaysia_slang/ui/listStateSlang/johor.dart';
+import 'package:malaysia_slang/ui/listStateSlang/kedah.dart';
+import 'package:malaysia_slang/ui/listStateSlang/kelantan.dart';
+import 'package:malaysia_slang/ui/listStateSlang/melaka.dart';
+import 'package:malaysia_slang/ui/listStateSlang/nismilan.dart';
+import 'package:malaysia_slang/ui/listStateSlang/pahang.dart';
+import 'package:malaysia_slang/ui/listStateSlang/perak.dart';
+import 'package:malaysia_slang/ui/listStateSlang/perlis.dart';
+import 'package:malaysia_slang/ui/listStateSlang/pinang.dart';
+import 'package:malaysia_slang/ui/listStateSlang/sabah.dart';
+import 'package:malaysia_slang/ui/listStateSlang/sarawak.dart';
+import 'package:malaysia_slang/ui/listStateSlang/terengganu.dart';
 
 class Choice {
   const Choice({required this.title, required this.image});

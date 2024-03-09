@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:translator_app/ui/settings/colorPicker.dart';
-import 'package:translator_app/ui/settings/joinTextAboutUs.dart';
-import 'package:translator_app/ui/settings/joinTextPolicy.dart';
-import 'package:translator_app/ui/widget/alertPopUp.dart';
+import 'package:malaysia_slang/ui/settings/colorPicker.dart';
+import 'package:malaysia_slang/ui/settings/joinTextAboutUs.dart';
+import 'package:malaysia_slang/ui/settings/joinTextPolicy.dart';
+import 'package:malaysia_slang/ui/widget/alertPopUp.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:io';
@@ -185,8 +185,9 @@ class _SettingsState extends State<Settings> {
                       ),
                       Divider(
                         thickness: 0.5,
-                        color: Colors.grey,
+                        color: Color.fromARGB(255, 209, 209, 209),
                       ),
+                      //share & recommend
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: ListTile(
@@ -198,58 +199,60 @@ class _SettingsState extends State<Settings> {
                           onTap: _shareApp,
                         ),
                       ),
+                      Divider(
+                        thickness: 0.5,
+                        color: Color.fromARGB(255, 209, 209, 209),
+                      ),
+                      //about us
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: ListTile(
+                          title: Text(
+                            'About Us',
+                            style: TextStyle(fontSize: 16.0),
+                            textAlign: TextAlign.left,
+                          ),
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertPopUp(
+                                  titleAlert: 'QueZ Apps',
+                                  contentAlert: joinedTextAboutUs(),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      Divider(
+                        thickness: 0.5,
+                        color: Color.fromARGB(255, 209, 209, 209),
+                      ),
+                      //privacy policy
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: ListTile(
+                          title: Text(
+                            'Privacy Policy',
+                            style: TextStyle(fontSize: 16.0),
+                            textAlign: TextAlign.left,
+                          ),
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertPopUp(
+                                  titleAlert: 'Privacy Policy',
+                                  contentAlert: joinedTextPrivacyPolicy(),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
                     ]),
                   ),
-                  Card(
-                      color: HexColor('#EDE9D5'),
-                      child: Column(children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: ListTile(
-                            title: Text(
-                              'About Us',
-                              style: TextStyle(fontSize: 16.0),
-                              textAlign: TextAlign.left,
-                            ),
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertPopUp(
-                                    titleAlert: 'QueZ Apps',
-                                    contentAlert: joinedTextAboutUs(),
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                        Divider(
-                          thickness: 0.5,
-                          color: Colors.grey,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: ListTile(
-                            title: Text(
-                              'Privacy Policy',
-                              style: TextStyle(fontSize: 16.0),
-                              textAlign: TextAlign.left,
-                            ),
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertPopUp(
-                                    titleAlert: 'Privacy Policy',
-                                    contentAlert: joinedTextPrivacyPolicy(),
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                      ])),
                 ],
               ),
             ),
