@@ -16,6 +16,8 @@ import 'package:translator_app/ui/listStateSlang/sarawak.dart';
 import 'package:translator_app/ui/listStateSlang/terengganu.dart';
 import 'package:translator_app/ui/slangExpansionTile.dart';
 
+import '../contsant/appBarTitle.dart';
+
 class SearchAll extends StatefulWidget {
   State<SearchAll> createState() => _SearchAllState();
 }
@@ -34,27 +36,13 @@ class _SearchAllState extends State<SearchAll> {
     _prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#66347F';
     });
   }
 
   String searchedValue = '';
 
-  var items = [
-    ...JohorList.johor,
-    ...KedahList.kedah,
-    ...KelantanList.kelantan,
-    ...KlSelangorList.klselangor,
-    ...MelakaList.melaka,
-    ...NismilanList.nismilan,
-    ...PahangList.pahang,
-    ...PerakList.perak,
-    ...PerlisList.perlis,
-    ...PinangList.pinang,
-    ...SabahList.sabah,
-    ...SarawakList.sarawak,
-    ...TerengganuList.terengganu
-  ];
+  var items = [...JohorList.johor, ...KedahList.kedah, ...KelantanList.kelantan, ...KlSelangorList.klselangor, ...MelakaList.melaka, ...NismilanList.nismilan, ...PahangList.pahang, ...PerakList.perak, ...PerlisList.perlis, ...PinangList.pinang, ...SabahList.sabah, ...SarawakList.sarawak, ...TerengganuList.terengganu];
 
   Widget build(BuildContext context) {
     _loadSelectedTheme();
@@ -71,30 +59,7 @@ class _SearchAllState extends State<SearchAll> {
         elevation: 0.0,
         backgroundColor: HexColor(selectedAppBarHexCode),
         centerTitle: true,
-        title: RichText(
-          text: TextSpan(
-            children: <TextSpan>[
-              TextSpan(
-                  text: 'Slang',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontFamily: 'PoppinsBold')),
-              TextSpan(
-                  text: ' - Malay - ',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.yellow,
-                      fontFamily: 'PoppinsBold')),
-              TextSpan(
-                  text: 'English',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontFamily: 'PoppinsBold')),
-            ],
-          ),
-        ),
+        title: AppBarTitle(),
       ),
       body: Column(
         children: [
@@ -115,24 +80,17 @@ class _SearchAllState extends State<SearchAll> {
             child: ListView.builder(
               itemCount: items.length,
               itemBuilder: (context, index) {
-                if (searchedValue.isNotEmpty &&
-                    !items[index]
-                        .toLowerCase()
-                        .contains(searchedValue.toLowerCase())) {
+                if (searchedValue.isNotEmpty && !items[index].toLowerCase().contains(searchedValue.toLowerCase())) {
                   return Container();
                 }
 
                 var splittedList = items[index].split("+");
 
-                if (searchedValue.isNotEmpty) {
-                  return SlangExpansionTileWidget(
-                    slangTitle: splittedList[0],
-                    malayTitle: splittedList[1],
-                    englishTitle: splittedList[2],
-                  );
-                }
-
-                return null;
+                return SlangExpansionTileWidget(
+                  slangTitle: splittedList[0],
+                  malayTitle: splittedList[1],
+                  englishTitle: splittedList[2],
+                );
               },
             ),
           ),

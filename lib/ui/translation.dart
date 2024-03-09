@@ -30,8 +30,7 @@ class _TranslationPageState extends State<TranslationPage> {
         });
       });
     } else {
-      SnackBarWidget.warningSnackBar(context,
-          snackBarContent: 'Please enter a word!', labelContent: 'Close');
+      SnackBarWidget.warningSnackBar(context, snackBarContent: 'Please enter a word!', labelContent: 'Close');
     }
   }
 
@@ -45,8 +44,7 @@ class _TranslationPageState extends State<TranslationPage> {
     _loadSliderFontSize();
     initConnectivity();
 
-    _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
   }
 
   void dispose() {
@@ -67,8 +65,7 @@ class _TranslationPageState extends State<TranslationPage> {
     try {
       result = await _connectivity.checkConnectivity();
     } on PlatformException catch (error) {
-      SnackBarWidget.warningSnackBar(context,
-          snackBarContent: error.toString(), labelContent: 'Close');
+      SnackBarWidget.warningSnackBar(context, snackBarContent: error.toString(), labelContent: 'Close');
       return;
     }
 
@@ -91,7 +88,7 @@ class _TranslationPageState extends State<TranslationPage> {
     _prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#66347F';
     });
   }
 
@@ -99,7 +96,7 @@ class _TranslationPageState extends State<TranslationPage> {
     var connResult = _connectionStatus.toString().split(".");
 
     _loadSelectedTheme();
-    
+
     return Scaffold(
       backgroundColor: HexColor('#EDE9D5'),
       appBar: AppBar(
@@ -115,18 +112,8 @@ class _TranslationPageState extends State<TranslationPage> {
         title: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(
-                  text: 'English',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontFamily: 'PoppinsBold')),
-              TextSpan(
-                  text: ' - Malay',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.yellow,
-                      fontFamily: 'PoppinsBold')),
+              TextSpan(text: 'English', style: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'PoppinsBold')),
+              TextSpan(text: ' - Malay', style: TextStyle(fontSize: 15, color: Colors.yellow, fontFamily: 'PoppinsBold')),
             ],
           ),
         ),
@@ -144,16 +131,12 @@ class _TranslationPageState extends State<TranslationPage> {
                   decoration: InputDecoration(
                     suffixIcon: IconButton(
                       icon: Icon(
-                        connResult[1] == 'none'
-                            ? Icons.search_off
-                            : Icons.search,
+                        connResult[1] == 'none' ? Icons.search_off : Icons.search,
                         color: Colors.black,
                       ),
                       onPressed: () {
                         if (connResult[1] == 'none') {
-                          SnackBarWidget.warningSnackBar(context,
-                              snackBarContent: 'No Internet connection!',
-                              labelContent: 'Close');
+                          SnackBarWidget.warningSnackBar(context, snackBarContent: 'No Internet connection!', labelContent: 'Close');
                         } else {
                           trans();
                         }
@@ -179,12 +162,7 @@ class _TranslationPageState extends State<TranslationPage> {
                           color: Colors.black,
                         ),
                         children: <TextSpan>[
-                          TextSpan(
-                              text: 'Malay',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Color(0xFF121212),
-                                  fontFamily: 'PoppinsBold')),
+                          TextSpan(text: 'Malay', style: TextStyle(fontSize: 15, color: Color(0xFF121212), fontFamily: 'PoppinsBold')),
                         ],
                       ),
                     ),
@@ -203,8 +181,7 @@ class _TranslationPageState extends State<TranslationPage> {
                       color: HexColor('#EDE9D5'),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: 15.0, left: 10.0, right: 10.0),
+                      padding: const EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
                       child: SelectableText(
                         malayLanguage,
                         style: TextStyle(

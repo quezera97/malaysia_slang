@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:translator_app/contsant/appBarTitle.dart';
 import 'package:translator_app/ui/widget/emailTemplate.dart';
 import 'package:translator_app/ui/widget/snackBar.dart';
 
@@ -30,12 +31,11 @@ class _ReportState extends State<Report> {
     _prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#66347F';
     });
   }
 
-  Widget build(BuildContext context) {    
-
+  Widget build(BuildContext context) {
     _loadSelectedTheme();
 
     return Scaffold(
@@ -50,30 +50,7 @@ class _ReportState extends State<Report> {
         elevation: 0.0,
         backgroundColor: HexColor(selectedAppBarHexCode),
         centerTitle: true,
-        title: RichText(
-          text: TextSpan(
-            children: <TextSpan>[
-              TextSpan(
-                  text: 'Slang',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontFamily: 'PoppinsBold')),
-              TextSpan(
-                  text: ' - Malay - ',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.yellow,
-                      fontFamily: 'PoppinsBold')),
-              TextSpan(
-                  text: 'English',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontFamily: 'PoppinsBold')),
-            ],
-          ),
-        ),
+        title: AppBarTitle(),
       ),
       body: Form(
         child: SingleChildScrollView(
@@ -94,12 +71,7 @@ class _ReportState extends State<Report> {
                               color: Colors.black,
                             ),
                             children: <TextSpan>[
-                              TextSpan(
-                                  text: 'Word',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: Color(0xFF121212),
-                                      fontFamily: 'PoppinsBold')),
+                              TextSpan(text: 'Word', style: TextStyle(fontSize: 15, color: Color(0xFF121212), fontFamily: 'PoppinsBold')),
                             ],
                           ),
                         ),
@@ -124,12 +96,7 @@ class _ReportState extends State<Report> {
                               color: Colors.black,
                             ),
                             children: <TextSpan>[
-                              TextSpan(
-                                  text: 'Report Details',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: Color(0xFF121212),
-                                      fontFamily: 'PoppinsBold')),
+                              TextSpan(text: 'Report Details', style: TextStyle(fontSize: 15, color: Color(0xFF121212), fontFamily: 'PoppinsBold')),
                               TextSpan(
                                   text: '*',
                                   style: TextStyle(
@@ -168,27 +135,20 @@ class _ReportState extends State<Report> {
                               );
 
                               if (emailresponse != 'success') {
-                                SnackBarWidget.succesSnackbar(context,
-                                    snackBarContent: emailresponse,
-                                    labelContent: 'Close');
+                                SnackBarWidget.succesSnackbar(context, snackBarContent: emailresponse, labelContent: 'Close');
                               }
 
                               Navigator.pop(context);
                             } else {
-                              SnackBarWidget.warningSnackBar(context,
-                                  snackBarContent:
-                                      'Please type in the report text field!',
-                                  labelContent: 'Close');
+                              SnackBarWidget.warningSnackBar(context, snackBarContent: 'Please type in the report text field!', labelContent: 'Close');
                             }
                           },
                           style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.redAccent),
+                            backgroundColor: MaterialStateProperty.all(Colors.redAccent),
                             // minimumSize: MaterialStateProperty.all(
                             //     const Size(332, 50)),
                           ),
-                          child: const Text('Report',
-                              style: TextStyle(fontSize: 15)),
+                          child: const Text('Report', style: TextStyle(fontSize: 15)),
                         )),
                   ],
                 ),

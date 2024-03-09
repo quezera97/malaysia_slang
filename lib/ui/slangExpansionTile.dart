@@ -21,8 +21,7 @@ class SlangExpansionTileWidget extends StatefulWidget {
     required this.englishTitle,
   });
 
-  _SlangExpansionTileWidgetState createState() =>
-      _SlangExpansionTileWidgetState();
+  _SlangExpansionTileWidgetState createState() => _SlangExpansionTileWidgetState();
 }
 
 class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
@@ -37,17 +36,13 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
 
   Future<void> _loadSliderFontSize() async {
     _prefs = await SharedPreferences.getInstance();
-    // setState(() {
     _resizedFontSize = _prefs.getDouble('prefsResizeText') ?? 16.0;
-    // });
   }
 
   Widget build(BuildContext context) {
     return ExpansionTile(
-        title: Text(widget.slangTitle,
-            style: TextStyle(fontSize: _resizedFontSize)),
-        subtitle: Text(widget.malayTitle,
-            style: TextStyle(fontSize: _resizedFontSize)),
+        title: Text(widget.slangTitle, style: TextStyle(fontSize: _resizedFontSize)),
+        subtitle: Text(widget.malayTitle, style: TextStyle(fontSize: _resizedFontSize)),
         leading: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -58,11 +53,8 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
                   PopupMenuItem(
                     child: LeadIconText(icon: Icons.copy, text: 'Salin'),
                     onTap: () async {
-                      await Clipboard.setData(
-                          ClipboardData(text: widget.slangTitle));
-                      SnackBarWidget.succesSnackbar(context,
-                          snackBarContent: 'Disalin ke papan klip!',
-                          labelContent: 'Tutup');
+                      await Clipboard.setData(ClipboardData(text: widget.slangTitle));
+                      SnackBarWidget.succesSnackbar(context, snackBarContent: 'Disalin ke papan klip!', labelContent: 'Tutup');
                     },
                   ),
                   PopupMenuItem(
@@ -75,8 +67,7 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
                     child: LeadIconText(icon: Icons.report, text: 'Lapor'),
                     onTap: () => Future(
                       () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (_) => Report(word: widget.slangTitle)),
+                        MaterialPageRoute(builder: (_) => Report(word: widget.slangTitle)),
                       ),
                     ),
                   ),
@@ -89,8 +80,7 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
           ListTile(
             title: Align(
               alignment: Alignment.centerRight,
-              child: Text(widget.englishTitle,
-                  style: TextStyle(fontSize: _resizedFontSize)),
+              child: Text(widget.englishTitle, style: TextStyle(fontSize: _resizedFontSize)),
             ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
@@ -102,11 +92,8 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
                       PopupMenuItem(
                         child: LeadIconText(icon: Icons.copy, text: 'Copy'),
                         onTap: () async {
-                          await Clipboard.setData(
-                              ClipboardData(text: widget.englishTitle));
-                          SnackBarWidget.succesSnackbar(context,
-                              snackBarContent: 'Copied to clipboard!',
-                              labelContent: 'Close');
+                          await Clipboard.setData(ClipboardData(text: widget.englishTitle));
+                          SnackBarWidget.succesSnackbar(context, snackBarContent: 'Copied to clipboard!', labelContent: 'Close');
                         },
                       ),
                       PopupMenuItem(
@@ -119,9 +106,7 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
                         child: LeadIconText(icon: Icons.report, text: 'Report'),
                         onTap: () => Future(
                           () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (_) =>
-                                    Report(word: widget.englishTitle)),
+                            MaterialPageRoute(builder: (_) => Report(word: widget.englishTitle)),
                           ),
                         ),
                       ),
@@ -134,11 +119,3 @@ class _SlangExpansionTileWidgetState extends State<SlangExpansionTileWidget> {
         ]);
   }
 }
-
-// IconButton(
-//   icon: Icon(Icons.play_arrow_sharp),
-//   iconSize: 30,
-//   onPressed: () async {
-//     await audioPlayer.play(AssetSource(widget.assetUrl));
-//   },
-// ),

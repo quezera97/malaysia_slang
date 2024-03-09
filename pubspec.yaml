@@ -33,7 +33,6 @@ dependencies:
   connectivity_plus: ^3.0.3
   share_plus: ^6.3.1
   flutter_translate: ^4.0.3
-  flutter_localization: ^0.1.10
   url_launcher: ^6.1.10
   flutter_launcher_icons: ^0.13.1
 

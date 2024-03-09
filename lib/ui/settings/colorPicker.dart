@@ -20,7 +20,7 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
     _prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#66347F';
     });
   }
 
@@ -54,10 +54,7 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
             children: <TextSpan>[
               TextSpan(
                 text: 'Color Picker',
-                style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
-                    fontFamily: 'PoppinsBold'),
+                style: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'PoppinsBold'),
               ),
             ],
           ),
@@ -72,8 +69,7 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
             child: Container(
               padding: const EdgeInsets.fromLTRB(25, 20, 25, 0),
               child: GridView.builder(
-                itemCount:
-                    appBarHexColorList.length, // number of items in the list
+                itemCount: appBarHexColorList.length, // number of items in the list
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   mainAxisSpacing: 10.0, // space between each row
@@ -115,10 +111,7 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
                   child: Text(
                     'Reset Default',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.blue[900],
-                        fontFamily: 'PoppinsBold'),
+                    style: TextStyle(fontSize: 15, color: Colors.blue[900], fontFamily: 'PoppinsBold'),
                   ),
                 ),
               ),

@@ -18,7 +18,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   late SharedPreferences _prefs;
   double _fontSize = 16.0;
-  final String packageName = 'test';
+  final String packageName = 'com.malaysia_slang';
 
   void initState() {
     super.initState();
@@ -47,8 +47,7 @@ class _SettingsState extends State<Settings> {
       if (await canLaunchUrl(url)) {
         await launchUrl(url);
       } else {
-        Uri webUrl = Uri.parse(
-            'https://play.google.com/store/apps/details?id=$packageName&showAllReviews=true');
+        Uri webUrl = Uri.parse('https://play.google.com/store/apps/details?id=$packageName&showAllReviews=true');
 
         if (await canLaunchUrl(webUrl)) {
           await launchUrl(webUrl);
@@ -65,8 +64,7 @@ class _SettingsState extends State<Settings> {
     if (await canLaunchUrl(Uri.parse(url))) {
       await Share.share(url);
     } else {
-      String url =
-          'https://play.google.com/store/apps/details?id=$packageName&showAllReviews=true';
+      String url = 'https://play.google.com/store/apps/details?id=$packageName&showAllReviews=true';
       if (await canLaunchUrl(Uri.parse(url))) {
         await Share.share(url);
       } else {
@@ -81,7 +79,7 @@ class _SettingsState extends State<Settings> {
     _prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#66347F';
     });
   }
 
@@ -103,12 +101,7 @@ class _SettingsState extends State<Settings> {
           title: RichText(
             text: TextSpan(
               children: <TextSpan>[
-                TextSpan(
-                    text: 'Settings',
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                        fontFamily: 'PoppinsBold')),
+                TextSpan(text: 'Settings', style: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'PoppinsBold')),
               ],
             ),
           ),
@@ -119,66 +112,65 @@ class _SettingsState extends State<Settings> {
               child: ListView(
                 children: [
                   Card(
+                      color: HexColor('#EDE9D5'),
                       child: Column(children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: ListTile(
-                          title: Text(
-                            'Customize Theme',
-                            style: TextStyle(fontSize: 16.0),
-                            textAlign: TextAlign.left,
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                              title: Text(
+                                'Customize Theme',
+                                style: TextStyle(fontSize: 16.0),
+                                textAlign: TextAlign.left,
+                              ),
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ColorPickerScreen()));
+                              }),
+                        ),
+                        Divider(
+                          thickness: 0.5,
+                          color: Colors.grey,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: ListTile(
+                            title: Text(
+                              'Resize text',
+                              style: TextStyle(fontSize: _fontSize),
+                              textAlign: TextAlign.center,
+                            ),
+                            subtitle: Slider(
+                              value: _fontSize,
+                              min: 10.0,
+                              max: 30.0,
+                              onChanged: (double value) {
+                                _saveSliderFontSize(value);
+                              },
+                            ),
                           ),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ColorPickerScreen()));
-                          }),
-                    ),
-                    Divider(
-                      thickness: 0.5,
-                      color: Colors.grey,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: ListTile(
-                        title: Text(
-                          'Resize text',
-                          style: TextStyle(fontSize: _fontSize),
-                          textAlign: TextAlign.center,
                         ),
-                        subtitle: Slider(
-                          value: _fontSize,
-                          min: 10.0,
-                          max: 30.0,
-                          onChanged: (double value) {
-                            _saveSliderFontSize(value);
-                          },
+                        Divider(
+                          thickness: 0.5,
+                          color: Colors.grey,
                         ),
-                      ),
-                    ),
-                    Divider(
-                      thickness: 0.5,
-                      color: Colors.grey,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: ListTile(
-                        title: Text(
-                          'Reset Settings',
-                          style: TextStyle(fontSize: 16.0),
-                          textAlign: TextAlign.left,
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                            title: Text(
+                              'Reset Settings',
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: () {
+                              _prefs.remove('prefsResizeText');
+                              _prefs.remove('prefsAppBarColor');
+                              _loadSelectedTheme();
+                              _loadSliderFontSize();
+                            },
+                          ),
                         ),
-                        onTap: () {
-                          _prefs.remove('prefsResizeText');
-                          _prefs.remove('prefsAppBarColor');
-                          _loadSelectedTheme();
-                          _loadSliderFontSize();
-                        },
-                      ),
-                    ),
-                  ])),
+                      ])),
                   Card(
+                    color: HexColor('#EDE9D5'),
                     child: Column(children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -209,54 +201,55 @@ class _SettingsState extends State<Settings> {
                     ]),
                   ),
                   Card(
+                      color: HexColor('#EDE9D5'),
                       child: Column(children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: ListTile(
-                        title: Text(
-                          'About Us',
-                          style: TextStyle(fontSize: 16.0),
-                          textAlign: TextAlign.left,
-                        ),
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertPopUp(
-                                titleAlert: 'QueZ Apps',
-                                contentAlert: joinedTextAboutUs(),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                            title: Text(
+                              'About Us',
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertPopUp(
+                                    titleAlert: 'QueZ Apps',
+                                    contentAlert: joinedTextAboutUs(),
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
-                      ),
-                    ),
-                    Divider(
-                      thickness: 0.5,
-                      color: Colors.grey,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: ListTile(
-                        title: Text(
-                          'Privacy Policy',
-                          style: TextStyle(fontSize: 16.0),
-                          textAlign: TextAlign.left,
+                          ),
                         ),
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertPopUp(
-                                titleAlert: 'Privacy Policy',
-                                contentAlert: joinedTextPrivacyPolicy(),
+                        Divider(
+                          thickness: 0.5,
+                          color: Colors.grey,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: ListTile(
+                            title: Text(
+                              'Privacy Policy',
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.left,
+                            ),
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertPopUp(
+                                    titleAlert: 'Privacy Policy',
+                                    contentAlert: joinedTextPrivacyPolicy(),
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
-                      ),
-                    ),
-                  ])),
+                          ),
+                        ),
+                      ])),
                 ],
               ),
             ),

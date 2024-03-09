@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:translator_app/contsant/appBarTitle.dart';
 import 'package:translator_app/ui/addWord.dart';
 import 'package:translator_app/ui/slangExpansionTile.dart';
 
@@ -10,9 +11,7 @@ class SlangList extends StatefulWidget {
   final String selectedSlang;
   final List<String> selectedSlangList;
 
-  SlangList(
-      {Key? key, required this.selectedSlang, required this.selectedSlangList})
-      : super(key: key);
+  SlangList({Key? key, required this.selectedSlang, required this.selectedSlangList}) : super(key: key);
 
   State<SlangList> createState() => _SlangListState();
 }
@@ -34,7 +33,7 @@ class _SlangListState extends State<SlangList> {
     _prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#37306B';
+      selectedAppBarHexCode = _prefs.getString('prefsAppBarColor') ?? '#66347F';
     });
   }
 
@@ -48,8 +47,7 @@ class _SlangListState extends State<SlangList> {
             ? BackButton(
                 color: Colors.white,
                 onPressed: () async {
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
                   await prefs.remove('prefsNegeri');
                   await prefs.remove('prefsListNegeri');
                   await prefs.remove('prefsSearchSlangByState');
@@ -63,41 +61,13 @@ class _SlangListState extends State<SlangList> {
                   color: Colors.white,
                 ),
                 onPressed: () async {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SlangList(
-                              selectedSlang: widget.selectedSlang,
-                              selectedSlangList: widget.selectedSlangList)));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SlangList(selectedSlang: widget.selectedSlang, selectedSlangList: widget.selectedSlangList)));
                 },
               ),
         elevation: 0.0,
         backgroundColor: HexColor(selectedAppBarHexCode),
         centerTitle: false,
-        title: RichText(
-          text: TextSpan(
-            children: <TextSpan>[
-              TextSpan(
-                  text: 'Slang',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontFamily: 'PoppinsBold')),
-              TextSpan(
-                  text: ' - Malay - ',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.yellow,
-                      fontFamily: 'PoppinsBold')),
-              TextSpan(
-                  text: 'English',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontFamily: 'PoppinsBold')),
-            ],
-          ),
-        ),
+        title: AppBarTitle(),
         actions: <Widget>[
           Row(
             children: [
@@ -107,11 +77,7 @@ class _SlangListState extends State<SlangList> {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              AddWord(slang: widget.selectedSlang)));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddWord(slang: widget.selectedSlang)));
                 },
               ),
               IconButton(
@@ -163,15 +129,11 @@ class _SlangListState extends State<SlangList> {
                   child: ListView.builder(
                     itemCount: widget.selectedSlangList.length,
                     itemBuilder: (context, index) {
-                      if (searchedValue.isNotEmpty &&
-                          !widget.selectedSlangList[index]
-                              .toLowerCase()
-                              .contains(searchedValue.toLowerCase())) {
+                      if (searchedValue.isNotEmpty && !widget.selectedSlangList[index].toLowerCase().contains(searchedValue.toLowerCase())) {
                         return Container();
                       }
 
-                      var splittedList =
-                          widget.selectedSlangList[index].split("+");
+                      var splittedList = widget.selectedSlangList[index].split("+");
 
                       if (searchedValue.isNotEmpty) {
                         return SlangExpansionTileWidget(

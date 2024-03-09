@@ -1,4 +1,3 @@
-
 class JohorList {
   static List<String> johor = <String>[
     'Air tawo + Air Tawar + Fresh water/ Tap water',
@@ -20,13 +19,10 @@ class JohorList {
     'Hantor + Hantar + Send',
     'Jajan + Makanan ringan + Junk food',
     'Jerang + Masak air/nasi + Boil',
-    // // 'Jotos + Sekel',
     'Kang + Nanti/Kemudian + Later',
     'Kejor + Kejar + Catch',
-    // // 'Kolah + Fridge',
     'Korang + Engkau orang + You guys',
     'Kosi + Kerusi + Chair',
-    // // 'Lantak + Chair',
     'Lapor + Lapar + Hungry',
     'Lawo + Cantik + Beautiful',
     'Leceh + Lambat + Late',
@@ -40,7 +36,6 @@ class JohorList {
     'Sogame + Sekolah agama + Religion school',
     'Sokkabor + Surat khabar + Newspaper',
     'Tampor + Tampar + Slap',
-    // // 'Terpeleot + Terseliuh',
     'Tikor + Tikar + Mat',
     'Tombot + Pelupusan sampah + Recycling place',
     'Tualo + Tuala + Towel',
